@@ -1,7 +1,6 @@
 # User
 # (1)program
-(bonus_program)
-(manda_program)
+miniRT
 include/*
 src/manda/include/*
 src/bonus/include/*

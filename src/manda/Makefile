@@ -6,7 +6,7 @@
 #    By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 13:14:14 by taerakim          #+#    #+#              #
-#    Updated: 2024/02/27 19:35:20 by taerakim         ###   ########.fr        #
+#    Updated: 2024/06/16 04:21:13 by taerakim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,4 +30,4 @@ LDLIBS := -l
 
 include $(TOPDIR)/include_make/Variable.mk
 include $(TOPDIR)/include_make/Link.mk
-include $(TOPDIR)/include_make/Recipe_src.mk
+include $(TOPDIR)/include_make/Recipe_subsrc.mk
