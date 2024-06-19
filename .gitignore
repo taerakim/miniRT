@@ -1,9 +1,6 @@
 # User
 # (1)program
 miniRT
-include/*
-src/manda/include/*
-src/bonus/include/*
 # (2)etc.
 test*
 .DS_Store
