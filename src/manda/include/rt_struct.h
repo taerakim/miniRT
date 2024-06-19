@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   rt_struct.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:07:28 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/19 14:22:37 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/19 15:55:25 by yeondcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#ifndef RT_STRUCT_H
+# define RT_STRUCT_H
 
 typedef struct s_vec	t_vec;
 typedef struct s_vec	t_point;
@@ -40,7 +40,7 @@ typedef enum e_obj_type
 typedef struct s_object
 {
 	t_obj_type	type;
-	t_point		pos;
+	t_point		point;
 	t_vec		nvec;
 	t_color		rgb;
 	double		ratio;
@@ -51,7 +51,7 @@ typedef struct s_object
 
 typedef struct s_camera
 {
-	t_point	pos;
+	t_point	point;
 	t_vec	nvec;
 	int		fov;
 }	t_camera;
@@ -64,7 +64,7 @@ typedef struct s_ambient
 
 typedef struct s_light
 {
-	t_point	pos;
+	t_point	point;
 	double	ratio;
 }	t_light;
 
