@@ -5,17 +5,19 @@ ifndef SRCDIR
 	SRCDIR = $(abspath ./)
 endif
 
-NAME := 
-SRCS := .c \
+NAME := miniRT
+SRCS := parse.c \
+		convertor.c \
+		
 
-# SRCS(in SRCDIR) ------
-DIRS := \
+## SRCS(in SRCDIR) ------
+#DIRS := \
 
-SUBS := $(addsuffix .a,$(DIRS))
+#SUBS := $(addsuffix .a,$(DIRS))
 
 # LIBRARYS -------------
-LDLIBS := -l
+LDLIBS := -lft
 
 include $(TOPDIR)/include_make/Variable.mk
 include $(TOPDIR)/include_make/Link.mk
-include $(TOPDIR)/include_make/Recipe_subsrc.mk
+include $(TOPDIR)/include_make/Recipe_src.mk

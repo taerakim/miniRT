@@ -3,16 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 14:34:08 by taerakim          #+#    #+#             */
-/*   Updated: 2024/03/08 20:15:11 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/19 14:46:16 by yeondcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
+# define EOF_G -2
+# define NON_NL -1
+# define READ_ERROR -3
 # include <stddef.h>
 
 typedef struct s_list
@@ -20,6 +25,14 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct s_gnl
+{
+	int				fd;
+	int				nl_idx;
+	char			*buf;
+	struct s_gnl	*next;
+}		t_gnl;
 
 void	*ft_malloc(size_t size);
 void	*ft_calloc(size_t count, size_t size);
@@ -65,5 +78,13 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+int		check_buffer(char *buf);
+char	*get_next_line(int fd);
+char	*alloc_line(t_gnl *node, int len);
+char	*split_nl(t_gnl *node, int nl_idx);
+void	fill_buffer(t_gnl *node, char **buf, int cur_len, int read_size);
+void	delnode(t_gnl **lst, int fd);
+t_gnl	*lstaddnew(t_gnl **lst, int fd);
+t_gnl	*lstschfd(t_gnl **lst, int fd);
 
 #endif

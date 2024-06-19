@@ -3,7 +3,6 @@ ifndef TOPDIR
 endif
 
 LIBS := libft \
-		get_next_line \
 
 all clean fclean re:
 	$(foreach lib,$(LIBS),$(MAKE) TOPDIR=$(TOPDIR) -C $(lib) $@;)
