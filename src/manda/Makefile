@@ -7,7 +7,10 @@ endif
 
 NAME := miniRT
 SRCS := main.c \
+		parse.c \
+		parse_utils.c \
 		init.c \
+		convertor.c \
 		mlx.c \
 		ray.c \
 		hit.c \

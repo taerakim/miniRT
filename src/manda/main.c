@@ -6,7 +6,7 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 17:24:46 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/21 16:10:25 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/21 16:37:17 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ int	main(int ac, char **av)
 	set_mlx_init(&env);
 /* ________________________________ TEST_SET ________________________________ */
 	element.camera.fov = 60;
-	element.camera.pos.x = 0;
-	element.camera.pos.y = 0;
-	element.camera.pos.z = 100;
+	element.camera.point.x = 0;
+	element.camera.point.y = 0;
+	element.camera.point.z = 100;
 	element.camera.nvec.x = 0;
 	element.camera.nvec.y = 0;
 	element.camera.nvec.z = -1;
@@ -49,9 +49,9 @@ int	main(int ac, char **av)
 	element.objs->rgb.r = 255;
 	element.objs->rgb.g = 255;
 	element.objs->rgb.b = 255;
-	element.objs->pos.x = 0;
-	element.objs->pos.y = -10;
-	element.objs->pos.z = 0;
+	element.objs->point.x = 0;
+	element.objs->point.y = -10;
+	element.objs->point.z = 0;
 	element.objs->nvec.x = 0;
 	element.objs->nvec.y = 1;
 	element.objs->nvec.z = 0;
