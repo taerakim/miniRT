@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 14:34:08 by taerakim          #+#    #+#             */
 /*   Updated: 2024/06/21 16:36:21 by taerakim         ###   ########.fr       */
@@ -21,6 +21,14 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct s_gnl
+{
+	int				fd;
+	int				nl_idx;
+	char			*buf;
+	struct s_gnl	*next;
+}		t_gnl;
 
 void	*ft_malloc(size_t size);
 void	*ft_calloc(size_t count, size_t size);

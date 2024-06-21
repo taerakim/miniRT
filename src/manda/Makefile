@@ -19,7 +19,7 @@ SRCS := main.c \
 DIRS := ft_error \
 		vector \
 
-SUBS := $(addsuffix .a,$(DIRS))
+#SUBS := $(addsuffix .a,$(DIRS))
 
 # LIBRARYS -------------
 LDLIBS := -lft -lmlx -framework OpenGL -framework Appkit
