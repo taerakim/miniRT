@@ -6,11 +6,12 @@
 /*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:11:09 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/19 21:38:02 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/21 14:00:46 by yeondcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
+#include <unistd.h>
 
 t_vec	vec(char *vec)
 {
