@@ -7,8 +7,8 @@ endif
 
 NAME := miniRT
 SRCS := parse.c \
+		parse_utils.c \
 		convertor.c \
-		
 
 ## SRCS(in SRCDIR) ------
 #DIRS := \
