@@ -3,7 +3,7 @@
 
 CFLAGS = -Wall -Wextra -Werror
 ARFLAGS = rcs
-CPPFLAGS = -I$(TOPDIR)/include
+CPPFLAGS = -I$(TOPDIR)/include -I$(SRCDIR)/include
 LDFLAGS = -L$(TOPDIR)/lib
 
 OBJS = $(SRCS:.c=.o)

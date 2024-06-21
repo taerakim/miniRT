@@ -6,7 +6,7 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 14:33:02 by taerakim          #+#    #+#             */
-/*   Updated: 2024/03/10 09:31:30 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/21 13:57:36 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int		read_to_buf(int fd, t_buf *curr_buf, bool *nl_flag);
 char	*get_one_line(t_buf **head, bool *nl_flag);
 char	*buf_to_str(t_buf **head, t_buf *bufnode, size_t len, bool *nl_flag);
 /* get_next_line_utils_bonus.c */
-int		manage_fd_node(t_file **curr, int fd);
+void	manage_fd_node(t_file **curr, int fd);
 void	connect_node(t_file **curr, int fd, t_file *new);
 void	delete_all_node(t_file **curr);
 void	check_newline(t_buf *bufnode, bool *nl_flag);

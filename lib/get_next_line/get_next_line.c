@@ -26,7 +26,7 @@ char	*get_next_line(int fd)
 	}
 	if (curr->save == NULL)
 	{
-		dummybuf = (t_buf *)ft_calloc(sizeof(t_buf));
+		dummybuf = (t_buf *)ft_calloc(sizeof(t_buf), 1);
 		curr->save = dummybuf;
 	}
 	if (curr->nl_flag == true)
@@ -68,7 +68,7 @@ int	read_to_buf(int fd, t_buf *bufnode, bool *nl_flag)
 	t_buf	*new;
 	ssize_t	read_result;
 
-	new = (t_buf *)ft_calloc(sizeof(t_buf));
+	new = (t_buf *)ft_calloc(sizeof(t_buf), 1);
 	read_result = read(fd, new->buffer, BUFFER_SIZE);
 	if (read_result <= 0)
 	{
@@ -119,7 +119,7 @@ char	*buf_to_str(t_buf **head, t_buf *bufnode, size_t len, bool *nl_flag)
 	size_t	idx;
 	size_t	total;
 
-	res = (char *)ft_calloc(sizeof(char) * (len + 1));
+	res = (char *)ft_calloc(sizeof(char) * (len + 1), 1);
 	total = 0;
 	while (bufnode != NULL)
 	{

@@ -12,14 +12,14 @@
 
 #include "get_next_line.h"
 
-int	manage_fd_node(t_file **curr, int fd)
+void	manage_fd_node(t_file **curr, int fd)
 {
 	t_file	*new;
 
 	while (*curr != NULL)
 	{
 		if (fd == (*curr)->fd)
-			return (0);
+			return ;
 		if (fd < (*curr)->fd)
 		{
 			if ((*curr)->prev == NULL || (*curr)->prev->fd < fd)
@@ -33,7 +33,7 @@ int	manage_fd_node(t_file **curr, int fd)
 			*curr = (*curr)->next;
 		}
 	}
-	new = (t_file *)ft_calloc(sizeof(t_file));
+	new = (t_file *)ft_calloc(sizeof(t_file), 1);
 	new->fd = fd;
 	if (*curr == NULL)
 		*curr = new;
