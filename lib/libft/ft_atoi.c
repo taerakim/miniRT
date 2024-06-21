@@ -3,34 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 14:04:20 by taerakim          #+#    #+#             */
-/*   Updated: 2024/03/08 20:20:42 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/19 20:38:11 by yeondcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+static int	is_space(char c)
+{
+	if (c == '\t' || c == '\n' || c == '\v' \
+	|| c == '\f' || c == '\r' || c == ' ')
+		return (1);
+	else
+		return (0);
+}
+
 int	ft_atoi(const char *str)
 {
-	long long	result;
-	int			sign;
-	int			idx;
+	int	result;
+	int	sign;
 
+	sign = 1;
 	result = 0;
-	sign = 0;
-	idx = 0;
-	while ((9 <= str[idx] && str[idx] <= 13) || str[idx] == 32)
-		idx++;
-	if (str[idx] == '-')
-		sign = -1;
-	else if (str[idx] == '+')
-		sign = 1;
-	if (str[idx] == '-' || str[idx] == '+')
-		idx++;
-	while ('0' <= str[idx] && str[idx] <= '9')
+	while (is_space(*str))
+		str++;
+	if (*str == '-' || *str == '+')
 	{
-		result = result * 10 + (str[idx] - '0');
-		idx++;
+		if (*str == '-')
+			sign *= -1;
+		str++;
 	}
-	return (result * sign);
+	while (*str)
+	{
+		if (!(*str >= '0' && *str <= '9'))
+			break ;
+		result *= 10;
+		if (sign > 0)
+			result += *str - 48;
+		else
+			result -= *str - 48;
+		str++;
+	}
+	return (result);
 }
