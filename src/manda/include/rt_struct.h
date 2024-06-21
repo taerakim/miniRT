@@ -6,7 +6,7 @@
 /*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:07:28 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/19 15:55:25 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/21 16:37:10 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ typedef struct s_camera
 	t_point	point;
 	t_vec	nvec;
 	int		fov;
+	/* for VIEWPORT*/
+	t_vec	lefttop;
+	t_vec	dx;
+	t_vec	dy;
 }	t_camera;
 
 typedef struct s_ambient

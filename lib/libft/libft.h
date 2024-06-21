@@ -6,18 +6,14 @@
 /*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 14:34:08 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/19 14:46:16 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/21 16:36:21 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
-# endif
-# define EOF_G -2
-# define NON_NL -1
-# define READ_ERROR -3
+
+/* __________________________________ LIBFT _________________________________ */
 # include <stddef.h>
 
 typedef struct s_list
@@ -79,6 +75,23 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int		check_buffer(char *buf);
+
+/* ______________________________ GET_NEXT_LINE _____________________________ */
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
+# define EOF_G -2
+# define NON_NL -1
+# define READ_ERROR -3
+
+typedef struct s_gnl
+{
+	int				fd;
+	int				nl_idx;
+	char			*buf;
+	struct s_gnl	*next;
+}		t_gnl;
+
 char	*get_next_line(int fd);
 char	*alloc_line(t_gnl *node, int len);
 char	*split_nl(t_gnl *node, int nl_idx);

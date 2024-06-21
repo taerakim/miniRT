@@ -6,17 +6,23 @@ ifndef SRCDIR
 endif
 
 NAME := miniRT
-SRCS := parse.c \
+SRCS := main.c \
+		parse.c \
 		parse_utils.c \
+		init.c \
 		convertor.c \
+		mlx.c \
+		ray.c \
+		hit.c \
 
-## SRCS(in SRCDIR) ------
-#DIRS := \
+# SRCS(in SRCDIR) ------
+DIRS := ft_error \
+		vector \
 
 #SUBS := $(addsuffix .a,$(DIRS))
 
 # LIBRARYS -------------
-LDLIBS := -lft
+LDLIBS := -lft -lmlx -framework OpenGL -framework Appkit
 
 include $(TOPDIR)/include_make/Variable.mk
 include $(TOPDIR)/include_make/Link.mk
