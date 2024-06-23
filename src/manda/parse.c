@@ -6,7 +6,7 @@
 /*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 22:18:30 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/23 11:59:45 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/23 12:11:17 by yeondcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	parse_to_obj(t_element *element, char *line)
 {
 	char	**obj_args;
 
-	obj_args = ft_split(line, ' ');
+	obj_args = rt_split(line);
 	if (obj_args == NULL)
 		return ;
 	if (ft_strncmp(obj_args[0], "A", 2) == 0)
