@@ -1,1 +1,1 @@
-/Users/yeondcho/42cursus/minirt/lib/libft/libft.h
+/goinfre/taerakim/miniRT_connect_with_parse/lib/libft/libft.h

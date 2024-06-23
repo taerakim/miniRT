@@ -3,24 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 19:45:03 by yeondcho          #+#    #+#             */
+<<<<<<< HEAD:src/manda/parse_utils.c
 /*   Updated: 2024/06/23 14:40:16 by yeondcho         ###   ########.fr       */
+=======
+/*   Updated: 2024/06/21 18:47:23 by taerakim         ###   ########.fr       */
+>>>>>>> e82a2f6... 1:src/manda/parse/parse_utils.c
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_error.h"
 #include "parse.h"
 #include <math.h>
 #include <float.h>
 #include <stdbool.h>
-
-static int	_error_atod(double *result)
-{
-	*result = 0.0;
-	write(2, "Error\n", 6);
-	return (0);
-}
 
 static int	_handle_prev(char *str, double *result, int *sign)
 {
@@ -67,10 +65,11 @@ int	atod(char *str, double *result)
 	}
 	*result *= sign;
 	if (str[idx] != '\0')
-		return (_error_atod(result));
+		ft_error(error_init);
 	return (1);
 }
 
+#include<stdio.h>
 void	print_element(t_element *elem)
 {
 	t_object	*ptr;

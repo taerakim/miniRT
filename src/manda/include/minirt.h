@@ -6,7 +6,7 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 17:33:38 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/21 16:09:04 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/23 10:19:38 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,19 @@ typedef struct s_mlx
 
 /* ________________________________ FUNCTION ________________________________ */
 /* init.c */
+void	init_file(t_element *element, char *file);
 void	set_mlx_init(t_mlx *env);
 void	set_viewport(t_camera *camera);
 /* mlx.c */
 void	put_pixel(t_img *img, int x, int y, int color);
 int		key_press(int keycode, void *arg);
 int		exit_success(void *arg);
+/* render.c */
+void	render(t_element *element, t_mlx *env);
 /* ray.c */
 t_vec	get_ray(t_camera *camera, int i, int k);
 /* hit.c */
-//sphere
+bool	hit_object(t_camera *camera, t_object *objs, t_vec ray);
 bool	hit_plane(t_object *plane, t_vec ray);
 //cylinder
 

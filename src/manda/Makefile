@@ -7,11 +7,9 @@ endif
 
 NAME := miniRT
 SRCS := main.c \
-		parse.c \
-		parse_utils.c \
 		init.c \
-		convertor.c \
 		mlx.c \
+		render.c \
 		ray.c \
 		hit.c \
 		split.c \
@@ -19,6 +17,7 @@ SRCS := main.c \
 
 # SRCS(in SRCDIR) ------
 DIRS := ft_error \
+		parse \
 		vector \
 
 SUBS := $(addsuffix .a,$(DIRS))
