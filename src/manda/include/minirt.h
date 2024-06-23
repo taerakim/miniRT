@@ -6,7 +6,7 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 17:33:38 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/23 10:19:38 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/23 10:20:32 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	render(t_element *element, t_mlx *env);
 t_vec	get_ray(t_camera *camera, int i, int k);
 /* hit.c */
 bool	hit_object(t_camera *camera, t_object *objs, t_vec ray);
+bool	hit_sphere(t_camera *camera, t_object *sphere, t_vec ray);
 bool	hit_plane(t_object *plane, t_vec ray);
 //cylinder
 
