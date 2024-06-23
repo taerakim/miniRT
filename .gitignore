@@ -8,6 +8,7 @@ src/manda/include/*
 !src/manda/include/minirt.h
 !src/manda/include/rt_struct.h
 # (2)etc.
+include/*
 test*
 .DS_Store
 .vscode/
