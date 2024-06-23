@@ -6,7 +6,7 @@
 /*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 22:18:30 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/19 21:30:16 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/23 11:59:45 by yeondcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,16 +83,16 @@ t_element	ft_parse_rt(int fd)
 	return (obj);
 }
 
-int	main(int argc, char **argv)
-{
-	t_element	elem;
-	int			fd;
+// int	main(int argc, char **argv)
+// {
+// 	t_element	elem;
+// 	int			fd;
 
-	if (argc <= 1)
-		return (1);
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
-		return (1);
-	elem = ft_parse_rt(fd);
-	print_element(&elem);
-}
+// 	if (argc <= 1)
+// 		return (1);
+// 	fd = open(argv[1], O_RDONLY);
+// 	if (fd == -1)
+// 		return (1);
+// 	elem = ft_parse_rt(fd);
+// 	print_element(&elem);
+// }
