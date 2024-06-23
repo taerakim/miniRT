@@ -55,7 +55,7 @@ void	parse_to_obj(t_element *element, char *line)
 	char	**obj_args;
 	int		i;
 
-	obj_args = ft_split(line, ' ');
+	obj_args = rt_split(line);
 	if (obj_args == NULL)
 		return ;
 	i = 0;
