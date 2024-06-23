@@ -53,17 +53,10 @@ void	create_object(t_object **head, char **vals)
 void	parse_to_obj(t_element *element, char *line)
 {
 	char	**obj_args;
-	int		i;
 
 	obj_args = rt_split(line);
 	if (obj_args == NULL)
 		return ;
-	i = 0;
-	while (obj_args[i])
-	{
-		obj_args[i] = ft_strtrim(obj_args[i], "\n");
-		i++;
-	}
 	if (ft_strncmp(obj_args[0], "A", 2) == 0)
 		element->ambient = create_ambient(&obj_args[1]);
 	else if (ft_strncmp(obj_args[0], "L", 2) == 0)
