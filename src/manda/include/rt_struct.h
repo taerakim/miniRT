@@ -6,7 +6,7 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:07:28 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/23 16:40:13 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/23 16:48:47 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,6 @@ struct s_vec
 	double	y;
 	double	z;
 };
-
-//typedef struct s_color
-//{
-//	double	x;//r
-//	double	y;//g
-//	double	z;//b
-//}	t_color;
 
 typedef enum e_obj_type
 {
