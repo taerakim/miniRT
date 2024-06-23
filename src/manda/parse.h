@@ -6,7 +6,7 @@
 /*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:36:16 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/19 21:37:20 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/22 16:25:03 by yeondcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ t_object	*create_cylinder(char **vals);
 t_object	*create_plane(char **vals);
 t_object	*create_sphere(char **vals);
 /* parser */
+
+t_element	ft_parse_rt(int fd);
+char		**rt_split(char *str);
+void		*ft_split_error(char **str, int size);
 
 /* test atod*/
 int			atod(char *str, double *result);
