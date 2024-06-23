@@ -6,7 +6,7 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 18:35:21 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/23 16:35:02 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/23 17:16:56 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	render_process(t_element *element, t_mlx *env, t_vec ray, int i, int k)
 	{
 		if (hit_object(&element->camera, object, ray, &record) == true)
 		{
-			color = vec_multi_scala(vec_addtion(object->rgb, element->ambient.rgb), element->ambient.ratio);
+			color = vmulti_s(vplus(object->rgb, element->ambient.rgb), element->ambient.ratio);
 			put_pixel(&env->img, i, k, rgb_to_hex(color));
 		}
 		object = object->next;

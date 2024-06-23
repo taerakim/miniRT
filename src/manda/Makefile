@@ -9,16 +9,12 @@ NAME := miniRT
 SRCS := main.c \
 		init.c \
 		mlx.c \
-		render.c \
-		ray.c \
-		hit.c \
-		split.c \
-		split_utils.c \
 
 # SRCS(in SRCDIR) ------
 DIRS := ft_error \
 		parse \
 		vector \
+		render \
 
 SUBS := $(addsuffix .a,$(DIRS))
 

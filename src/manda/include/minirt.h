@@ -6,7 +6,7 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 17:33:38 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/23 16:35:36 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/23 17:37:23 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@
 // __ DELETE 예정 __
 
 /* _________________________________ DEFINE _________________________________ */
-# define WINDOW_W 500
-# define WINDOW_H 300
+# define WINDOW_W 1920
+# define WINDOW_H 1080
 # define PROGRAM "miniRT"
 
 # define FOCAL_LENGTH 1.0
 # define VIEWPORT_HEIGHT 2.0
-# define RENDER_MAX 100000000//??????
+# define RENDER_MAX 1000//??????
 
 # define NOT_USE -1
 # define KEY_PRESS 2
