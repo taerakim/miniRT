@@ -6,7 +6,7 @@
 /*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 22:18:30 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/19 21:30:16 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/23 12:11:17 by yeondcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,10 @@ void	create_object(t_object **head, char **vals)
 void	parse_to_obj(t_element *element, char *line)
 {
 	char	**obj_args;
-	int		i;
 
-	obj_args = ft_split(line, ' ');
+	obj_args = rt_split(line);
 	if (obj_args == NULL)
 		return ;
-	i = 0;
-	while (obj_args[i])
-	{
-		obj_args[i] = ft_strtrim(obj_args[i], "\n");
-		i++;
-	}
 	if (ft_strncmp(obj_args[0], "A", 2) == 0)
 		element->ambient = create_ambient(&obj_args[1]);
 	else if (ft_strncmp(obj_args[0], "L", 2) == 0)
@@ -90,16 +83,16 @@ t_element	ft_parse_rt(int fd)
 	return (obj);
 }
 
-int	main(int argc, char **argv)
-{
-	t_element	elem;
-	int			fd;
+// int	main(int argc, char **argv)
+// {
+// 	t_element	elem;
+// 	int			fd;
 
-	if (argc <= 1)
-		return (1);
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
-		return (1);
-	elem = ft_parse_rt(fd);
-	print_element(&elem);
-}
+// 	if (argc <= 1)
+// 		return (1);
+// 	fd = open(argv[1], O_RDONLY);
+// 	if (fd == -1)
+// 		return (1);
+// 	elem = ft_parse_rt(fd);
+// 	print_element(&elem);
+// }
