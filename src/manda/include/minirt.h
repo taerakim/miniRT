@@ -6,7 +6,7 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 17:33:38 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/23 10:20:32 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/23 16:35:36 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 // __ DELETE 예정 __
 #include<stdio.h>
+#include<unistd.h>
 // __ DELETE 예정 __
 
 /* _________________________________ DEFINE _________________________________ */
@@ -28,6 +29,7 @@
 
 # define FOCAL_LENGTH 1.0
 # define VIEWPORT_HEIGHT 2.0
+# define RENDER_MAX 100000000//??????
 
 # define NOT_USE -1
 # define KEY_PRESS 2
@@ -65,9 +67,9 @@ void	render(t_element *element, t_mlx *env);
 /* ray.c */
 t_vec	get_ray(t_camera *camera, int i, int k);
 /* hit.c */
-bool	hit_object(t_camera *camera, t_object *objs, t_vec ray);
-bool	hit_sphere(t_camera *camera, t_object *sphere, t_vec ray);
+bool	hit_object(t_camera *camera, t_object *objs, t_vec ray, t_hit *record);
+bool	hit_sphere(t_camera *camera, t_object *sphere, t_vec ray, t_hit *record);
 bool	hit_plane(t_object *plane, t_vec ray);
-//cylinder
+bool	hit_cylinder(t_camera *camera, t_object *cylinder, t_vec ray);
 
 #endif

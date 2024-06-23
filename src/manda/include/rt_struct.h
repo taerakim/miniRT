@@ -3,18 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   rt_struct.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:07:28 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/23 14:39:23 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/23 16:40:13 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_STRUCT_H
 # define RT_STRUCT_H
 
+# include <stdbool.h>
+
 typedef struct s_vec	t_vec;
 typedef struct s_vec	t_point;
+typedef struct s_vec	t_color;
 
 struct s_vec
 {
@@ -23,18 +26,18 @@ struct s_vec
 	double	z;
 };
 
-typedef struct s_color
-{
-	double	r;
-	double	g;
-	double	b;
-}	t_color;
+//typedef struct s_color
+//{
+//	double	x;//r
+//	double	y;//g
+//	double	z;//b
+//}	t_color;
 
 typedef enum e_obj_type
 {
-	sphere,
-	plane,
-	cylinder
+	type_sphere,
+	type_plane,
+	type_cylinder
 }	t_obj_type;
 
 typedef struct s_object
@@ -79,5 +82,15 @@ typedef struct s_element
 	t_light		light;
 	t_object	*objs;
 }	t_element;
+
+typedef struct s_hit
+{
+	t_vec	nvec;
+	t_point	p;
+	double	t;
+	double	tmin;
+	double	tmax;
+	bool	isfront;
+}	t_hit;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 17:24:46 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/21 19:42:32 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/23 16:04:24 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ int	main(int ac, char **av)
 	t_mlx		env;
 	t_element	element;
 
-	if (ac != 2)
-		return (-1);
+	//if (ac != 2)
+	//	return (-1);
 	(void)av;
+	(void)ac;
 	//init_file(&element, av[1]);
 	/* ________________________________ TEST_SET ____________________________ */
 	element.camera.fov = 60;
@@ -34,11 +35,15 @@ int	main(int ac, char **av)
 	element.camera.nvec.x = 0;
 	element.camera.nvec.y = 0;
 	element.camera.nvec.z = -1;
+	element.ambient.rgb.x = 255;
+	element.ambient.rgb.y = 255;
+	element.ambient.rgb.z = 255;
+	element.ambient.ratio = 0.1;
 	element.objs = (t_object *)ft_calloc(sizeof(t_object), 1);
-	element.objs->type = plane;
-	element.objs->rgb.r = 255;
-	element.objs->rgb.g = 255;
-	element.objs->rgb.b = 255;
+	element.objs->type = type_plane;
+	element.objs->rgb.x = 0;
+	element.objs->rgb.y = 0;
+	element.objs->rgb.z = 255;
 	element.objs->point.x = 0;
 	element.objs->point.y = -10;
 	element.objs->point.z = 0;
@@ -47,18 +52,29 @@ int	main(int ac, char **av)
 	element.objs->nvec.z = 0;
 	element.objs->next = (t_object *)ft_calloc(sizeof(t_object), 1);
 	t_object *more = element.objs->next;
-	more->type = sphere;
+	//more->type = type_sphere;
+	//more->diameter = 100;
+	//more->rgb.x = 0;
+	//more->rgb.y = 255;
+	//more->rgb.z = 0;
+	//more->point.x = 0;
+	//more->point.y = 0;
+	//more->point.z = 0;
+	more->type = type_cylinder;
 	more->diameter = 100;
-	more->rgb.r = 255;
-	more->rgb.g = 255;
-	more->rgb.b = 255;
+	more->rgb.x = 255;
+	more->rgb.y = 0;
+	more->rgb.z = 0;
 	more->point.x = 0;
 	more->point.y = 0;
 	more->point.z = 0;
+	more->nvec.x = 0;
+	more->nvec.y = 1;
+	more->nvec.z = 0;
 	//more->type = plane;
-	//more->rgb.r = 255;
-	//more->rgb.g = 255;
-	//more->rgb.b = 255;
+	//more->rgb.x = 255;
+	//more->rgb.y = 255;
+	//more->rgb.z = 255;
 	//more->point.x = 0;
 	//more->point.y = 0;
 	//more->point.z = -10;

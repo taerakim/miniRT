@@ -6,25 +6,52 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 18:35:21 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/21 19:46:20 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/23 16:35:02 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
 #include "minirt.h"
+#include "vector.h"
 
-//void	render_process(t_element *element, t_mlx *env, t_vec ray)
-//{
-//	//1. 1개의 ray를 구하고 or 가진채로
-//	//2. 모든 object를 돌며 hit판정
-//		//3. hit된 것을 빛에 도달하는지 다른오브젝트의 부딪히는 지 등 또 hit검사
-//	//4. 최종으로 조명 정도와 그런 것들을 계산 후 put_pixel()
-//}
+unsigned long	rgb_to_hex(t_color color)
+{
+	const int	r = round(color.x);
+	const int	g = round(color.y);
+	const int	b = round(color.z);
+
+	return ((r << 16) | (g << 8) | b);
+}
+
+void	render_process(t_element *element, t_mlx *env, t_vec ray, int i, int k)
+{
+	t_object	*object;
+	t_hit		record;
+	t_color		color;
+
+	record.tmin = 0;
+	record.tmax = RENDER_MAX;
+	object = element->objs;
+	while(object)
+	{
+		if (hit_object(&element->camera, object, ray, &record) == true)
+		{
+			color = vec_multi_scala(vec_addtion(object->rgb, element->ambient.rgb), element->ambient.ratio);
+			put_pixel(&env->img, i, k, rgb_to_hex(color));
+		}
+		object = object->next;
+	}
+}
 
 void	render(t_element *element, t_mlx *env)
 {
 	int		i;
 	int		k;
 	t_vec	ray;
+	t_hit	record;
+
+	record.tmin = 0;
+	record.tmax = RENDER_MAX;
 
 	k = 0;
 	while (k < WINDOW_H)
@@ -33,10 +60,7 @@ void	render(t_element *element, t_mlx *env)
 		while (i < WINDOW_W)
 		{
 			ray = get_ray(&element->camera, i, k);
-			if (hit_object(&element->camera, element->objs, ray) == true)
-				put_pixel(&env->img, i, k, 0X00559966);
-			if (hit_object(&element->camera, element->objs->next, ray) == true)
-				put_pixel(&env->img, i, k, 0X0000FF99);
+			render_process(element, env, ray, i, k);
 			i++;
 		}
 		k++;

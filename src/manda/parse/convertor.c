@@ -6,7 +6,7 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:11:09 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/23 16:37:55 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/23 16:39:37 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ t_color	color(char *rgb)
 	color = ft_split(rgb, ',');
 	if (arg_len(color) != 3)
 		ft_error(error_init);
-	atod(color[0], &obj.r);
-	atod(color[1], &obj.g);
-	atod(color[2], &obj.b);
+	atod(color[0], &obj.x);
+	atod(color[1], &obj.y);
+	atod(color[2], &obj.z);
 	return (obj);
 }
 
@@ -99,7 +99,7 @@ t_object	*create_sphere(char **vals)
 	if (arg_len(vals) != 3)
 		return (NULL);
 	obj = ft_malloc(sizeof(t_object));
-	obj->type = sphere;
+	obj->type = type_sphere;
 	obj->point = point(vals[0]);
 	atod(vals[1], &obj->diameter);
 	obj->rgb = color(vals[2]);
@@ -114,7 +114,7 @@ t_object	*create_plane(char **vals)
 	if (arg_len(vals) != 3)
 		return (NULL);
 	obj = ft_malloc(sizeof(t_object));
-	obj->type = plane;
+	obj->type = type_plane;
 	obj->point = point(vals[0]);
 	obj->nvec = vec(vals[1]);
 	obj->rgb = color(vals[2]);
@@ -129,7 +129,7 @@ t_object	*create_cylinder(char **vals)
 	if (arg_len(vals) != 5)
 		return (NULL);
 	obj = ft_malloc(sizeof(t_object));
-	obj->type = cylinder;
+	obj->type = type_cylinder;
 	obj->point = point(vals[0]);
 	obj->nvec = vec(vals[1]);
 	atod(vals[2], &obj->diameter);
