@@ -6,16 +6,13 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:36:16 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/23 16:37:47 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/23 17:21:40 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_H
 # define PARSE_H
 
-# include <fcntl.h>
-# include <stdlib.h>
-# include <unistd.h>
 # include "rt_struct.h"
 # include "libft.h"
 

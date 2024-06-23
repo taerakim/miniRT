@@ -6,14 +6,14 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 12:14:26 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/21 15:29:17 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/23 17:11:40 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt_struct.h"
 #include "ft_error.h"
 
-t_vec	vec_addtion(t_vec a, t_vec b)
+t_vec	vplus(t_vec a, t_vec b)
 {
 	t_vec	c;
 
@@ -23,7 +23,7 @@ t_vec	vec_addtion(t_vec a, t_vec b)
 	return (c);
 }
 
-t_vec	vec_subtraction(t_vec a, t_vec b)
+t_vec	vminus(t_vec a, t_vec b)
 {
 	t_vec	c;
 
@@ -33,7 +33,7 @@ t_vec	vec_subtraction(t_vec a, t_vec b)
 	return (c);
 }
 
-t_vec	vec_divi(t_vec a, t_vec b)
+t_vec	vdivi(t_vec a, t_vec b)
 {
 	t_vec	divi;
 
@@ -45,12 +45,12 @@ t_vec	vec_divi(t_vec a, t_vec b)
 	return (divi);
 }
 
-double	vec_inner(t_vec a, t_vec b)
+double	vinner(t_vec a, t_vec b)
 {
 	return (a.x * b.x + a.y * b.y + a.z * b.z);
 }
 
-t_vec	vec_cross(t_vec a, t_vec b)
+t_vec	vcross(t_vec a, t_vec b)
 {
 	t_vec	cross;
 

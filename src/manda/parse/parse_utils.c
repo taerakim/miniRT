@@ -6,15 +6,14 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 19:45:03 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/23 16:39:33 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/23 17:10:08 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_error.h"
-#include "parse.h"
 #include <math.h>
 #include <float.h>
-#include <stdbool.h>
+#include "parse.h"
+#include "ft_error.h"
 
 static int	_handle_prev(char *str, double *result, int *sign)
 {

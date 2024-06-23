@@ -6,7 +6,7 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 00:16:58 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/21 18:52:46 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/23 17:50:10 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	ft_error(t_error_type errcase)
 		perror("error");
 		exit(EXIT_FAILURE);
 	}
+	else if (errcase == error_argument)
+		ft_putendl_fd("error: need .rt file", 2);
 	else if (errcase == error_mlx_mlx)
 		ft_putendl_fd("error: mlx_init() Failed", 2);
 	else if (errcase == error_mlx_win)

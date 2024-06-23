@@ -6,12 +6,10 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:11:09 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/23 16:39:37 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/23 17:21:34 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
-#include "vector.h"
 #include <unistd.h>
 #include "parse.h"
 #include "ft_error.h"
