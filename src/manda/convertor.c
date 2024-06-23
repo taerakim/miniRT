@@ -6,11 +6,12 @@
 /*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:11:09 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/21 14:00:46 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/23 15:37:58 by yeondcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
+#include "vector.h"
 #include <unistd.h>
 
 t_vec	vec(char *vec)
@@ -88,7 +89,7 @@ t_camera	create_camera(char **vals)
 		init_error();
 	camera.point = point(vals[0]);
 	camera.nvec = vec(vals[1]);
-	camera.fov = ft_atoi(vals[2]);
+	atod(vals[2], &camera.fov);
 	return (camera);
 }
 
