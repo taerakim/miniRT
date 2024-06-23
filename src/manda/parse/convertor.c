@@ -6,13 +6,13 @@
 /*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:11:09 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/23 15:37:58 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/23 19:41:53 by yeondcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
-#include "vector.h"
 #include <unistd.h>
+#include "parse.h"
+#include "ft_error.h"
 
 t_vec	vec(char *vec)
 {
@@ -21,8 +21,7 @@ t_vec	vec(char *vec)
 
 	val = ft_split(vec, ',');
 	if (arg_len(val) != 3)
-		init_error();
-	//nullguard
+		ft_error(error_init);
 	atod(val[0], &obj.x);
 	atod(val[1], &obj.y);
 	atod(val[2], &obj.z);
@@ -36,8 +35,7 @@ t_point	point(char *pos)
 
 	point = ft_split(pos, ',');
 	if (arg_len(point) != 3)
-		init_error();
-	//nullguard
+		ft_error(error_init);
 	atod(point[0], &obj.x);
 	atod(point[1], &obj.y);
 	atod(point[2], &obj.z);
@@ -51,11 +49,10 @@ t_color	color(char *rgb)
 
 	color = ft_split(rgb, ',');
 	if (arg_len(color) != 3)
-		init_error();
-	//nullguard
-	atod(color[0], &obj.r);
-	atod(color[1], &obj.g);
-	atod(color[2], &obj.b);
+		ft_error(error_init);
+	atod(color[0], &obj.x);
+	atod(color[1], &obj.y);
+	atod(color[2], &obj.z);
 	return (obj);
 }
 
@@ -64,7 +61,7 @@ t_ambient	create_ambient(char **vals)
 	t_ambient	amb;
 
 	if (arg_len(vals) != 2)
-		init_error();
+		ft_error(error_init);
 	atod(vals[0], &amb.ratio);
 	amb.rgb = color(vals[1]);
 	return (amb);
@@ -75,7 +72,7 @@ t_light	create_light(char **vals)
 	t_light	light;
 
 	if (arg_len(vals) < 2 && arg_len(vals) < 4)
-		init_error();
+		ft_error(error_init);
 	light.point = point(vals[0]);
 	atod(vals[1], &light.ratio);
 	return (light);
@@ -86,7 +83,7 @@ t_camera	create_camera(char **vals)
 	t_camera	camera;
 
 	if (arg_len(vals) != 3)
-		init_error();
+		ft_error(error_init);
 	camera.point = point(vals[0]);
 	camera.nvec = vec(vals[1]);
 	atod(vals[2], &camera.fov);
@@ -99,10 +96,8 @@ t_object	*create_sphere(char **vals)
 
 	if (arg_len(vals) != 3)
 		return (NULL);
-	obj = malloc(sizeof(t_object));
-	if (obj == NULL)
-		return (NULL);
-	obj->type = sphere;
+	obj = ft_malloc(sizeof(t_object));
+	obj->type = type_sphere;
 	obj->point = point(vals[0]);
 	atod(vals[1], &obj->diameter);
 	obj->rgb = color(vals[2]);
@@ -116,10 +111,8 @@ t_object	*create_plane(char **vals)
 
 	if (arg_len(vals) != 3)
 		return (NULL);
-	obj = malloc(sizeof(t_object));
-	if (obj == NULL)
-		return (NULL);
-	obj->type = plane;
+	obj = ft_malloc(sizeof(t_object));
+	obj->type = type_plane;
 	obj->point = point(vals[0]);
 	obj->nvec = vec(vals[1]);
 	obj->rgb = color(vals[2]);
@@ -133,10 +126,8 @@ t_object	*create_cylinder(char **vals)
 
 	if (arg_len(vals) != 5)
 		return (NULL);
-	obj = malloc(sizeof(t_object));
-	if (obj == NULL)
-		return (NULL);
-	obj->type = cylinder;
+	obj = ft_malloc(sizeof(t_object));
+	obj->type = type_cylinder;
 	obj->point = point(vals[0]);
 	obj->nvec = vec(vals[1]);
 	atod(vals[2], &obj->diameter);
@@ -150,15 +141,10 @@ int	arg_len(char **vals)
 {
 	int	i;
 
+	if (vals == NULL)
+		return (0);
 	i = 0;
 	while (vals[i])
 		i++;
 	return (i);
 }
-
-void	init_error(void)
-{
-	write(2, "Error\n", 6);
-	exit(1);
-}
-

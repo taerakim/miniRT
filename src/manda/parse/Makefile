@@ -5,11 +5,13 @@ ifndef SRCDIR
 	SRCDIR = $(abspath ../)
 endif
 
-NAME := vector.a
-HEAD := vector.h
-SRCS := vec.c \
-		vec_cal.c \
-		vec_cal_s.c \
+NAME := parse.a
+HEAD := parse.h
+SRCS := parse.c \
+		convertor.c \
+		parse_utils.c \
+		split.c \
+		split_utils.c \
 
 include $(TOPDIR)/include_make/Variable.mk
 include $(TOPDIR)/include_make/Link.mk

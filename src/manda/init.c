@@ -6,13 +6,15 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 17:39:09 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/21 15:26:48 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/23 17:19:02 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
+#include <fcntl.h>
 #include <stddef.h>
 #include "minirt.h"
+#include "parse.h"
 #include "ft_error.h"
 
 void	set_mlx_init(t_mlx *env)
@@ -28,4 +30,15 @@ void	set_mlx_init(t_mlx *env)
 		ft_error(error_mlx_img);
 	env->img.addr = mlx_get_data_addr(env->img.img, &env->img.bits_per_pixel, \
 									&env->img.line_length, &env->img.endian);
+}
+
+void	init_file(t_element *element, char *file)
+{
+	int	fd;
+
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		ft_error(error_file);
+	*element = ft_parse_rt(fd);
+	print_element(element);
 }

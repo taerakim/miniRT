@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 22:18:30 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/23 12:11:17 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/23 17:21:55 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "parse.h"
 
 int	ft_getline_count(int fd)
@@ -82,17 +83,3 @@ t_element	ft_parse_rt(int fd)
 	}
 	return (obj);
 }
-
-// int	main(int argc, char **argv)
-// {
-// 	t_element	elem;
-// 	int			fd;
-
-// 	if (argc <= 1)
-// 		return (1);
-// 	fd = open(argv[1], O_RDONLY);
-// 	if (fd == -1)
-// 		return (1);
-// 	elem = ft_parse_rt(fd);
-// 	print_element(&elem);
-// }
