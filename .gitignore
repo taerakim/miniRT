@@ -1,6 +1,12 @@
 # User
 # (1)program
 miniRT
+include/*
+src/bonus/include/*
+src/manda/include/*
+# exclude
+!src/manda/include/minirt.h
+!src/manda/include/rt_struct.h
 # (2)etc.
 test*
 .DS_Store
