@@ -6,7 +6,7 @@
 /*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 19:45:03 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/21 13:59:58 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/23 14:40:16 by yeondcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	print_element(t_element *elem)
 	int			i;
 
 	printf("element print==========================================================\n");
-	printf("CAMERA(t_camera): \n\t point: %.2f, %.2f, %.2f \n\t nvec: %.2f, %.2f, %.2f \n\t fov: %d\n\n", \
+	printf("CAMERA(t_camera): \n\t point: %.2f, %.2f, %.2f \n\t nvec: %.2f, %.2f, %.2f \n\t fov: %f\n\n", \
 	elem->camera.point.x, elem->camera.point.y, elem->camera.point.z, \
 	elem->camera.nvec.x, elem->camera.nvec.y, elem->camera.nvec.z, \
 	elem->camera.fov);

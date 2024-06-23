@@ -14,12 +14,14 @@ SRCS := main.c \
 		mlx.c \
 		ray.c \
 		hit.c \
+		split.c \
+		split_utils.c \
 
 # SRCS(in SRCDIR) ------
 DIRS := ft_error \
 		vector \
 
-#SUBS := $(addsuffix .a,$(DIRS))
+SUBS := $(addsuffix .a,$(DIRS))
 
 # LIBRARYS -------------
 LDLIBS := -lft -lmlx -framework OpenGL -framework Appkit
