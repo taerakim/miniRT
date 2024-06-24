@@ -6,7 +6,7 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 15:31:36 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/23 17:16:56 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/24 19:14:54 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ void	set_viewport(t_camera *camera)
 	double	gy;
 
 	w = camera->nvec;
-	if (vdiff(w, vset(0, 1, 0)) == true)
-		u = vmulti_s(vcross(w, vset(0, 0, 1)), -1);
+	if (vdiff(vset(0, 1, 0), w) == true)
+		u = vcross(vset(0, 0, 1), w);
 	else
-		u = vmulti_s(vcross(w, vset(0, 1, 0)), -1);
+		u = vcross(vset(0, 1, 0), w);
 	v = vcross(u, w);
 	gx = tan(camera->fov / 2 * M_PI / 180);
 	gy = gx * WINDOW_H / WINDOW_W;

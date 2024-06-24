@@ -6,7 +6,7 @@
 /*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:07:28 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/23 19:41:44 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/24 20:57:21 by yeondcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_light
 {
 	t_point	point;
 	double	ratio;
+	t_color	rgb;// parsing 된다 했었던 것 같은데
 }	t_light;
 
 typedef struct s_element
@@ -78,6 +79,7 @@ typedef struct s_element
 
 typedef struct s_hit
 {
+	bool	ishit;
 	t_vec	nvec;
 	t_point	p;
 	double	t;
@@ -85,5 +87,12 @@ typedef struct s_hit
 	double	tmax;
 	bool	isfront;
 }	t_hit;
+
+typedef struct s_det
+{
+	double	det;
+	double	t;
+}	t_det;
+
 
 #endif
