@@ -6,7 +6,7 @@
 /*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 17:33:38 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/23 21:54:20 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/24 17:40:05 by yeondcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	render(t_element *element, t_mlx *env);
 /* ray.c */
 t_vec	get_ray(t_camera *camera, int i, int k);
 /* hit.c */
+void	_check_front(t_vec ray, t_hit *record);
 bool	hit_object(t_camera *camera, t_object *objs, t_vec ray, t_hit *record);
 bool	hit_sphere(t_camera *camera, t_object *sphere, t_vec ray, t_hit *record);
 bool	hit_plane(t_camera *camera, t_object *plane, t_vec ray, t_hit *record);
@@ -77,5 +78,8 @@ bool	hit_cylinder_base(t_camera *camera, t_object *cylinder, \
 t_vec ray, t_hit *record);
 bool	hit_cylinder_top(t_camera *camera, t_object *cylinder, \
 t_vec ray, t_hit *record);
+/* calc.c */
+double	min(double a, double b);
+t_det	det(double a, double b, double c);
 
 #endif
