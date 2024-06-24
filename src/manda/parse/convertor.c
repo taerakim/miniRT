@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   convertor.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:11:09 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/23 17:21:34 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/23 22:12:12 by yeondcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "parse.h"
 #include "ft_error.h"
+#include "vector.h"
 
 t_vec	vec(char *vec)
 {
@@ -25,7 +26,7 @@ t_vec	vec(char *vec)
 	atod(val[0], &obj.x);
 	atod(val[1], &obj.y);
 	atod(val[2], &obj.z);
-	return (obj);
+	return (vunit(obj));
 }
 
 t_point	point(char *pos)

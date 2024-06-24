@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_struct.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:07:28 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/23 16:48:47 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/24 17:07:11 by yeondcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,12 @@ typedef struct s_hit
 	double	tmax;
 	bool	isfront;
 }	t_hit;
+
+typedef struct s_det
+{
+	double	det;
+	double	t;
+}	t_det;
+
 
 #endif

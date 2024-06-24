@@ -9,6 +9,8 @@ NAME := render.a
 SRCS := render.c \
 		ray.c \
 		hit.c \
+		hit_cylinder.c \
+		calc.c \
 
 include $(TOPDIR)/include_make/Variable.mk
 include $(TOPDIR)/include_make/Link.mk
