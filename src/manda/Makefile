@@ -12,8 +12,8 @@ SRCS := main.c \
 
 # SRCS(in SRCDIR) ------
 DIRS := ft_error \
-		parse \
 		vector \
+		parse \
 		render \
 
 SUBS := $(addsuffix .a,$(DIRS))
