@@ -69,10 +69,13 @@ t_vec	get_ray(t_camera *camera, int i, int k);
 /* hit.c */
 bool	hit_object(t_camera *camera, t_object *objs, t_vec ray, t_hit *record);
 bool	hit_sphere(t_camera *camera, t_object *sphere, t_vec ray, t_hit *record);
-bool	hit_plane(t_object *plane, t_vec ray);
-bool	hit_cylinder(t_camera *camera, t_object *cylinder, t_vec ray);
-bool	hit_cylinder_side(t_camera *camera, t_object *cylinder, t_vec ray);
+bool	hit_plane(t_camera *camera, t_object *plane, t_vec ray, t_hit *record);
+/* hiy_cylinder.c */
+bool	hit_cylinder(t_camera *camera, t_object *cylinder, t_vec ray, t_hit *record);
+bool	hit_cylinder_side(t_camera *camera, t_object *cylinder, t_vec ray, t_hit *record);
 bool	hit_cylinder_base(t_camera *camera, t_object *cylinder, \
-t_vec ray, int dir);
+t_vec ray, t_hit *record);
+bool	hit_cylinder_top(t_camera *camera, t_object *cylinder, \
+t_vec ray, t_hit *record);
 
 #endif
