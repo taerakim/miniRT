@@ -30,7 +30,8 @@ typedef enum e_obj_type
 {
 	type_sphere,
 	type_plane,
-	type_cylinder
+	type_cylinder,
+	type_cone,
 }	t_obj_type;
 
 typedef struct s_object
