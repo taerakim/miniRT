@@ -10,7 +10,11 @@ SRCS := render.c \
 		ray.c \
 		hit.c \
 		hit_cylinder.c \
+		hit_cone.c \
+		hit_trace.c \
 		calc.c \
+		lighting.c \
+		color.c \
 
 include $(TOPDIR)/include_make/Variable.mk
 include $(TOPDIR)/include_make/Link.mk

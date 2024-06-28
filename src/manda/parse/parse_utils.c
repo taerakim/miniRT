@@ -6,7 +6,7 @@
 /*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 19:45:03 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/23 19:41:57 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/27 21:59:41 by yeondcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include <float.h>
 #include "parse.h"
 #include "ft_error.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 static int	_handle_prev(char *str, double *result, int *sign)
 {
@@ -64,49 +66,27 @@ int	atod(char *str, double *result)
 	return (1);
 }
 
-#include<stdio.h>
-void	print_element(t_element *elem)
+void	add_light_to_list(t_light **head, t_light *new)
 {
-	t_object	*ptr;
-	int			i;
+	t_light	*ptr;
 
-	printf("element print==========================================================\n");
-	printf("CAMERA(t_camera): \n\t point: %.2f, %.2f, %.2f \n\t nvec: %.2f, %.2f, %.2f \n\t fov: %f\n\n", \
-	elem->camera.point.x, elem->camera.point.y, elem->camera.point.z, \
-	elem->camera.nvec.x, elem->camera.nvec.y, elem->camera.nvec.z, \
-	elem->camera.fov);
-	printf("AMBIENT(t_ambient): \n\t rgb: %.2f, %.2f, %.2f \n\t ratio: %.2f\n\n", \
-	elem->ambient.rgb.x, elem->ambient.rgb.y, elem->ambient.rgb.z, elem->ambient.ratio);
-	printf("LIGHT(t_light): \n\t point: %.2f, %.2f, %.2f \n\t ratio: %.2f\n", \
-	elem->light.point.x, elem->light.point.y, elem->light.point.z, elem->light.ratio);
-	printf("=======================================================================\n");
-	printf("Objects list\n ");
-	ptr = elem->objs;
-	i = 1;
-	while (ptr)
+	ptr = *head;
+	if (ptr == NULL)
 	{
-		if (ptr->type == type_cylinder)
-		{
-			printf("\tOBJECT(#%d): cylinder -> \n\t\t point: %.2f, %.2f, %.2f \n\t\t nvec: %.2f, %.2f, %.2f \n\t\t diameter: %.2f \n\t\t height: %.2f \n\t\t rgb: %.2f, %.2f, %.2f \n\n", i,\
-			ptr->point.x, ptr->point.y, ptr->point.z, \
-			ptr->nvec.x, ptr->nvec.y, ptr->nvec.z, ptr->diameter, ptr->height, 
-			ptr->rgb.x, ptr->rgb.y, ptr->rgb.z);
-		}
-		if (ptr->type == type_plane)
-		{
-			printf("\tOBJECT(#%d): plane -> \n\t\t point: %.2f, %.2f, %.2f \n\t\t nvec: %.2f, %.2f, %.2f \n\t\t rgb: %.2f, %.2f, %.2f \n\n", i,\
-			ptr->point.x, ptr->point.y, ptr->point.z, \
-			ptr->nvec.x, ptr->nvec.y, ptr->nvec.z, \
-			ptr->rgb.x, ptr->rgb.y, ptr->rgb.z);
-		}
-		if (ptr->type == type_sphere)
-		{
-			printf("\tOBJECT(#%d): sphere -> \n\t\t point: %.2f, %.2f, %.2f \n\t\t diameter: %.2f \n\t\t rgb: %.2f, %.2f, %.2f \n\n", i,\
-			ptr->point.x, ptr->point.y, ptr->point.z, ptr->diameter, \
-			ptr->rgb.x, ptr->rgb.y, ptr->rgb.z);
-		}
-		ptr = ptr->next;
-		i++;
+		*head = new;
+		return ;
 	}
-	printf("=======================================================================\n");
+	while (ptr->next)
+		ptr = ptr->next;
+	ptr->next = new;
+}
+
+void	ft_clear_char(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i])
+		free(str[i++]);
+	free(str);
 }

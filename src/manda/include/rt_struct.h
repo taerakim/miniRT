@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_struct.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:07:28 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/24 19:54:30 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/27 22:05:04 by yeondcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ typedef enum e_obj_type
 {
 	type_sphere,
 	type_plane,
-	type_cylinder
+	type_cylinder,
+	type_cone,
 }	t_obj_type;
 
 typedef struct s_object
@@ -50,7 +51,6 @@ typedef struct s_camera
 	t_point	point;
 	t_vec	nvec;
 	double	fov;
-	/* for VIEWPORT*/
 	t_vec	lefttop;
 	t_vec	dx;
 	t_vec	dy;
@@ -66,26 +66,28 @@ typedef struct s_light
 {
 	t_point	point;
 	double	ratio;
-	t_color	rgb;// parsing 된다 했었던 것 같은데
+	t_color	rgb;
+	void	*next;
 }	t_light;
 
 typedef struct s_element
 {
 	t_camera	camera;
 	t_ambient	ambient;
-	t_light		light;
+	t_light		*light;
 	t_object	*objs;
 }	t_element;
 
 typedef struct s_hit
 {
-	bool	ishit;
-	t_vec	nvec;
-	t_point	p;
-	double	t;
-	double	tmin;
-	double	tmax;
-	bool	isfront;
+	bool		ishit;
+	t_vec		nvec;
+	t_object	object;
+	t_point		p;
+	double		t;
+	double		tmin;
+	double		tmax;
+	bool		isfront;
 }	t_hit;
 
 typedef struct s_det
@@ -93,6 +95,5 @@ typedef struct s_det
 	double	det;
 	double	t;
 }	t_det;
-
 
 #endif
