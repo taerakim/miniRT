@@ -6,7 +6,7 @@
 /*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 17:33:38 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/24 17:40:05 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/27 21:54:41 by yeondcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,15 @@
 # include <stdbool.h>
 # include "rt_struct.h"
 
-// __ DELETE 예정 __
-#include<stdio.h>
-#include<unistd.h>
-// __ DELETE 예정 __
-
 /* _________________________________ DEFINE _________________________________ */
 # define WINDOW_W 1920
 # define WINDOW_H 1080
 # define PROGRAM "miniRT"
+# define BIAS 1e-5
 
-# define FOCAL_LENGTH 1.0
+# define FOCAL_LENGTH 1
 # define VIEWPORT_HEIGHT 2.0
-# define RENDER_MAX 1000//??????
+# define RENDER_MAX 10000//??????
 
 # define NOT_USE -1
 # define KEY_PRESS 2
@@ -68,18 +64,36 @@ void	render(t_element *element, t_mlx *env);
 t_vec	get_ray(t_camera *camera, int i, int k);
 /* hit.c */
 void	_check_front(t_vec ray, t_hit *record);
-bool	hit_object(t_camera *camera, t_object *objs, t_vec ray, t_hit *record);
-bool	hit_sphere(t_camera *camera, t_object *sphere, t_vec ray, t_hit *record);
-bool	hit_plane(t_camera *camera, t_object *plane, t_vec ray, t_hit *record);
-/* hiy_cylinder.c */
-bool	hit_cylinder(t_camera *camera, t_object *cylinder, t_vec ray, t_hit *record);
-bool	hit_cylinder_side(t_camera *camera, t_object *cylinder, t_vec ray, t_hit *record);
-bool	hit_cylinder_base(t_camera *camera, t_object *cylinder, \
+bool	hit_object(t_point origin, t_object **objs, t_vec ray, t_hit *record);
+bool	hit_sphere(t_point camera, t_object *sphere, t_vec ray, t_hit *record);
+bool	hit_plane(t_point camera, t_object *plane, t_vec ray, t_hit *record);
+/* hit_cylinder.c */
+bool	\
+hit_cylinder(t_point camera, t_object *cylinder, t_vec ray, t_hit *record);
+bool	\
+hit_cylinder_side(t_point camera, t_object *cylinder, t_vec ray, t_hit *record);
+bool	hit_cylinder_base(t_point camera, t_object *cylinder, \
 t_vec ray, t_hit *record);
-bool	hit_cylinder_top(t_camera *camera, t_object *cylinder, \
+bool	hit_cylinder_top(t_point camera, t_object *cylinder, \
 t_vec ray, t_hit *record);
+
+/* hit_cone.c*/
+bool	hit_cone(t_point camera, t_object *cone, t_vec ray, t_hit *record);
 /* calc.c */
 double	min(double a, double b);
 t_det	det(double a, double b, double c);
+t_color	cmulti(t_color a, t_color b);
 
+/* lighting.c */
+t_color	ambient(t_element *element, t_color obj_color);
+t_color	diffuse(t_hit *hit, t_light *light, t_color obj_color);
+t_color	specular(t_hit *hit, t_light *light, t_color obj_color, t_vec ray);
+/* color.c */
+t_color	cplus(t_color a, t_color b);
+t_color	cmulti(t_color a, t_color b);
+t_color	cmulti_s(t_color a, double b);
+t_color	cminus(t_color a, t_color b);
+t_color	cdiv(t_color a, double b);
+/* hit_trace.c */
+bool	hit_trace(t_object **head, t_hit *hit, t_light *light);
 #endif

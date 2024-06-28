@@ -1,40 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calc.c                                             :+:      :+:    :+:   */
+/*   hit_trace.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/24 11:09:05 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/27 21:47:24 by yeondcho         ###   ########.fr       */
+/*   Created: 2024/06/26 15:47:29 by yeondcho          #+#    #+#             */
+/*   Updated: 2024/06/27 19:56:26 by yeondcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "rt_struct.h"
+#include "vector.h"
 #include "minirt.h"
 
-double	min(double a, double b)
+bool	hit_trace(t_object **head, t_hit *hit, t_light *light)
 {
-	if (a > 0 && b > 0)
-	{
-		if (a > b)
-			return (b);
-		else
-			return (a);
-	}
-	else if (a > 0)
-		return (a);
-	else if (b > 0)
-		return (b);
-	return (0);
-}
+	t_hit		record;
+	t_vec		lp;
+	t_vec		ray;
 
-t_det	det(double a, double b, double c)
-{
-	t_det	result;
-
-	result.det = b * b - a * c;
-	result.t = min((-b + sqrt(result.det)) / a, (-b - sqrt(result.det)) / a);
-	return (result);
+	hit->p = vplus(hit->p, vmulti_s(hit->nvec, BIAS));
+	lp = vminus(hit->p, light->point);
+	record.tmin = 1e-6;
+	record.tmax = RENDER_MAX;
+	record.t = 0;
+	record.ishit = false;
+	ray = vunit(lp);
+	hit_object(light->point, head, ray, &record);
+	if (record.ishit && pow(record.tmax, 2) < vinner(lp, lp))
+		return (false);
+	return (record.ishit);
 }
