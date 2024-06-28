@@ -3,17 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 20:00:40 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/25 21:09:06 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:33:05 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "minirt.h"
-#include "vector.h"
-#include "libft.h"
 
 t_color	cplus(t_color a, t_color b)
 {

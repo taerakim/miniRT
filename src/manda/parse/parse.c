@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 22:18:30 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/27 22:11:09 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/28 14:21:08 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "parse.h"
+#include "ft_error.h"
 
 int	ft_getline_count(int fd)
 {
@@ -37,12 +38,14 @@ void	create_object(t_object **head, char **vals)
 	new = NULL;
 	if (ft_strncmp(vals[0], "pl", 3) == 0)
 		new = create_plane(&vals[1]);
-	if (ft_strncmp(vals[0], "sp", 3) == 0)
+	else if (ft_strncmp(vals[0], "sp", 3) == 0)
 		new = create_sphere(&vals[1]);
-	if (ft_strncmp(vals[0], "cy", 3) == 0)
+	else if (ft_strncmp(vals[0], "cy", 3) == 0)
 		new = create_cylinder(&vals[1]);
-	if (ft_strncmp(vals[0], "co", 3) == 0)
+	else if (ft_strncmp(vals[0], "co", 3) == 0)
 		new = create_cone(&vals[1]);
+	else
+		ft_error(error_file_format);
 	if (!new)
 		return ;
 	ptr = *head;
@@ -56,40 +59,53 @@ void	create_object(t_object **head, char **vals)
 	ptr->next = new;
 }
 
-void	parse_to_obj(t_element *element, char *line)
+void	parse_to_obj(t_element *element, char **obj_args, bool *init_flag)
 {
-	char	**obj_args;
-
-	obj_args = rt_split(line);
-	if (obj_args == NULL)
-		return ;
-	if (ft_strncmp(obj_args[0], "#", 2) == 0)
-	{
-		ft_clear_char(obj_args);
-		return ;
-	}
 	if (ft_strncmp(obj_args[0], "A", 2) == 0)
-		element->ambient = create_ambient(&obj_args[1]);
+	{
+		if (init_flag[0] == false)
+		{
+			element->ambient = create_ambient(&obj_args[1]);
+			init_flag[0] = true;
+		}
+		else
+			ft_error(error_file_format);
+	}
+	else if (ft_strncmp(obj_args[0], "C", 2) == 0)
+	{
+		if (init_flag[1] == false)
+		{
+			element->camera = create_camera(&obj_args[1]);
+			init_flag[1] = true;
+		}
+		else
+			ft_error(error_file_format);
+	}
 	else if (ft_strncmp(obj_args[0], "L", 2) == 0)
 		create_light(&element->light, &obj_args[1]);
-	else if (ft_strncmp(obj_args[0], "C", 2) == 0)
-		element->camera = create_camera(&obj_args[1]);
 	else
 		create_object(&element->objs, obj_args);
-	ft_clear_char(obj_args);
 }
 
 t_element	ft_parse_rt(int fd)
 {
 	t_element	obj;
+	bool		init_flag[2];
 	char		*line;
+	char		**obj_args;
 
-	obj.objs = NULL;
-	obj.light = NULL;
+	ft_memset(&obj, 0, sizeof(t_element));
+	ft_memset(init_flag, 0, sizeof(bool) * 2);
 	line = get_next_line(fd);
 	while (line)
 	{
-		parse_to_obj(&obj, line);
+		obj_args = rt_split(line);
+		if (obj_args != NULL)
+		{
+			if (ft_strncmp(obj_args[0], "#", 2) != 0)
+				parse_to_obj(&obj, obj_args, init_flag);
+			ft_clear_char(obj_args);
+		}
 		free(line);
 		line = get_next_line(fd);
 	}

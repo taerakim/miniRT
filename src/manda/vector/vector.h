@@ -6,15 +6,17 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 12:11:53 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/23 17:16:56 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:26:02 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECTOR_H
 # define VECTOR_H
 
+/* ________________________________ INCLUDE _________________________________ */
 # include "rt_struct.h"
 
+/* ________________________________ FUNCTION ________________________________ */
 t_vec	vset(double x, double y, double z);
 t_vec	vunit(t_vec vec);
 bool	vdiff(t_vec a, t_vec b);

@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   calc.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 11:09:05 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/27 21:47:24 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:33:24 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "rt_struct.h"
 #include "minirt.h"
 
 double	min(double a, double b)

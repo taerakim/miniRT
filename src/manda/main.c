@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 17:24:46 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/27 22:03:07 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:25:22 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
-#include <unistd.h>
 #include "minirt.h"
 #include "ft_error.h"
 
@@ -28,6 +27,6 @@ int	main(int ac, char **av)
 	render(&element, &env);
 	mlx_put_image_to_window(env.mlx, env.win, env.img.img, 0, 0);
 	mlx_hook(env.win, KEY_PRESS, NOT_USE, key_press, &env);
-	mlx_hook(env.win, CROSS_BUTTON, NOT_USE, exit_success, NULL);
+	mlx_hook(env.win, CROSS_BUTTON, NOT_USE, exit_success, 0);
 	mlx_loop(env.mlx);
 }

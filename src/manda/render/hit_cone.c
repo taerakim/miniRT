@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   hit_cone.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 22:25:32 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/27 21:48:14 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:49:36 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.h"
 #include <math.h>
-#include "rt_struct.h"
 #include "minirt.h"
+#include "vector.h"
 
 bool
 hit_cone_side(t_point camera, t_object *cone, t_vec ray, t_hit *record);

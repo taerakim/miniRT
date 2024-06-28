@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 17:39:09 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/27 22:22:44 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:24:58 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include <fcntl.h>
-#include <stddef.h>
 #include "minirt.h"
 #include "parse.h"
 #include "ft_error.h"

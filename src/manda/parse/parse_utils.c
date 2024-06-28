@@ -3,19 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 19:45:03 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/27 21:59:41 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/28 14:16:54 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
-#include <float.h>
+#include <stdlib.h>
 #include "parse.h"
 #include "ft_error.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 static int	_handle_prev(char *str, double *result, int *sign)
 {
@@ -45,8 +42,6 @@ int	atod(char *str, double *result)
 	fraction = 0.1;
 	while ('0' <= str[idx] && str[idx] <= '9')
 	{
-		//if (*result > (DBL_MAX - (str[idx] - '0')) / 10)
-			//return (_error_atod(result));
 		*result = *result * 10.0 + (str[idx] - '0');
 		idx++;
 	}
@@ -54,8 +49,6 @@ int	atod(char *str, double *result)
 		idx += 1;
 	while ('0' <= str[idx] && str[idx] <= '9')
 	{
-		//if (*result > DBL_MAX - (str[idx] - '0') * fraction)
-		//	return (_error_atod(result));
 		*result += (str[idx] - '0') * fraction;
 		fraction *= 0.1;
 		idx++;
