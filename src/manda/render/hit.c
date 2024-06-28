@@ -6,7 +6,7 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 15:29:47 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/28 13:34:22 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/28 16:51:04 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,10 @@ bool	hit_plane(t_point camera, t_object *plane, t_vec ray, t_hit *record)
 	double		t;
 
 	t = vinner(ea, plane->nvec) / vinner(ray, plane->nvec);
-	if (vinner(ray, plane->nvec) == 0 || t < record->tmin || record->tmax < t)
+	if (-EPSILON < vinner(ray, plane->nvec) \
+	&& vinner(ray, plane->nvec) < EPSILON)
+		return (false);
+	if (t < record->tmin || record->tmax < t)
 		return (false);
 	record->t = t;
 	record->ishit = true;

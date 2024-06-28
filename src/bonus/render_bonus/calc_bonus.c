@@ -6,7 +6,7 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 11:09:05 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/28 14:59:35 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/28 16:55:07 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ double	min(double a, double b)
 		return (a);
 	else if (b > 0)
 		return (b);
-	return (0);
+	return (-1);
 }
 
 t_det	det(double a, double b, double c)

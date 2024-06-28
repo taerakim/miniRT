@@ -6,7 +6,7 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 22:25:32 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/28 13:49:36 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/28 16:52:05 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ t_vec ray, t_hit *record)
 	pow(vinner(ce, cone->nvec), 2) - vinner(ce, ce) * pow(cos(theta), 2));
 	t_vec			cp;
 
-	if (ans.det < 0 || ans.t < record->tmin || record->tmax < ans.t)
+	if (ans.det < 0)
 		return (false);
 	cp = vplus(ce, vmulti_s(ray, ans.t));
-	if (!(0 <= vinner(cone->nvec, cp) \
-	&& vinner(cone->nvec, cp) <= cone->height))
+	if (!(EPSILON <= vinner(cone->nvec, cp) \
+	&& vinner(cone->nvec, cp) <= cone->height + EPSILON))
 		return (false);
 	record->t = ans.t;
 	record->tmax = record->t;
@@ -67,7 +67,7 @@ t_vec ray, t_hit *record)
 	double		t;
 	t_vec		cp;
 
-	if (vinner(ray, cone->nvec) == 0)
+	if (-EPSILON < vinner(ray, cone->nvec) && vinner(ray, cone->nvec) < EPSILON)
 		return (false);
 	t = vinner(ec, cone->nvec) / vinner(ray, cone->nvec);
 	cp = vplus(vminus(camera, cone->point), \

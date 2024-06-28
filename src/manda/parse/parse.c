@@ -6,7 +6,7 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 22:18:30 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/28 14:21:08 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/28 16:34:34 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,12 +99,14 @@ t_element	ft_parse_rt(int fd)
 	line = get_next_line(fd);
 	while (line)
 	{
-		obj_args = rt_split(line);
-		if (obj_args != NULL)
+		if (line[0] != '#')
 		{
-			if (ft_strncmp(obj_args[0], "#", 2) != 0)
+			obj_args = rt_split(line);
+			if (obj_args != NULL)
+			{
 				parse_to_obj(&obj, obj_args, init_flag);
-			ft_clear_char(obj_args);
+				ft_clear_char(obj_args);
+			}
 		}
 		free(line);
 		line = get_next_line(fd);

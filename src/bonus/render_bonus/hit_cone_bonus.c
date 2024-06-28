@@ -6,7 +6,7 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 22:25:32 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/28 14:59:35 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/28 16:52:10 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_vec ray, t_hit *record)
 	if (ans.det < 0 || ans.t < record->tmin || record->tmax < ans.t)
 		return (false);
 	cp = vplus(ce, vmulti_s(ray, ans.t));
-	if (!(0 <= vinner(cone->nvec, cp) \
+	if (!(EPSILON <= vinner(cone->nvec, cp) \
 	&& vinner(cone->nvec, cp) <= cone->height))
 		return (false);
 	record->t = ans.t;
@@ -67,7 +67,7 @@ t_vec ray, t_hit *record)
 	double		t;
 	t_vec		cp;
 
-	if (vinner(ray, cone->nvec) == 0)
+	if (-EPSILON < vinner(ray, cone->nvec) && vinner(ray, cone->nvec) < EPSILON)
 		return (false);
 	t = vinner(ec, cone->nvec) / vinner(ray, cone->nvec);
 	cp = vplus(vminus(camera, cone->point), \

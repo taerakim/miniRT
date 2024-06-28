@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 18:35:21 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/27 22:08:18 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/28 15:59:54 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	init_record(t_hit *record)
 	record->t = 0;
 	record->nvec = vset(0, 0, 0);
 	record->p = vset(0, 0, 0);
-	record->tmin = 1e-6;
+	record->tmin = EPSILON;
 	record->tmax = RENDER_MAX;
 }
 

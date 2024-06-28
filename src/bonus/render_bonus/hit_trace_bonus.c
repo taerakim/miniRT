@@ -6,7 +6,7 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:47:29 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/28 14:59:35 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/28 15:59:52 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ bool	hit_trace(t_object **head, t_hit *hit, t_light *light)
 
 	hit->p = vplus(hit->p, vmulti_s(hit->nvec, BIAS));
 	lp = vminus(hit->p, light->point);
-	record.tmin = 1e-6;
+	record.tmin = EPSILON;
 	record.tmax = RENDER_MAX;
 	record.t = 0;
 	record.ishit = false;
