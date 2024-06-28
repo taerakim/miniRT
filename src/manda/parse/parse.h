@@ -6,7 +6,7 @@
 /*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:36:16 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/27 21:58:24 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:38:06 by yeondcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,12 @@ t_element	ft_parse_rt(int fd);
 char		**rt_split(char *str);
 void		*ft_split_error(char **str, int size);
 
-/* test atod*/
-void		print_element(t_element *elem);
+/* validate.c */
+int			validate_nvec(char **val);
+int			validate_color(char **val);
+int			validate_ratio(char *val);
+
+/* parse_utils.c */
 void		add_light_to_list(t_light **head, t_light *new);
 void		ft_clear_char(char **str);
 int			atod(char *str, double *result);
