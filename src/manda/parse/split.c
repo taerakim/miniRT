@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 15:05:31 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/22 16:25:12 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/28 14:08:36 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,6 @@ char	**rt_split(char *str)
 	if (size < 1)
 		return (NULL);
 	res = (char **)ft_calloc(8, size + 1);
-	if (res == NULL)
-		return (NULL);
 	while (str[search_idx] && is_contain(set, str[search_idx]))
 		search_idx++;
 	i = -1;
