@@ -36,7 +36,7 @@ t_point	point(char *pos)
 
 	point = ft_split(pos, ',');
 	if (arg_len(point) != 3)
-		ft_error(error_init);
+		ft_error(error_file_format);
 	atod(point[0], &obj.x);
 	atod(point[1], &obj.y);
 	atod(point[2], &obj.z);
@@ -50,7 +50,7 @@ t_color	color(char *rgb)
 
 	color = ft_split(rgb, ',');
 	if (arg_len(color) != 3)
-		ft_error(error_init);
+		ft_error(error_file_format);
 	atod(color[0], &obj.x);
 	atod(color[1], &obj.y);
 	atod(color[2], &obj.z);

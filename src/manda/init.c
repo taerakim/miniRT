@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 17:39:09 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/23 17:19:02 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/27 22:22:44 by yeondcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,10 @@ void	init_file(t_element *element, char *file)
 {
 	int	fd;
 
-	fd = open(file, O_RDONLY);
+	fd = open(file, O_RDWR);
 	if (fd == -1)
 		ft_error(error_file);
+	if (ft_strncmp(&file[ft_strlen(file) - 3], ".rt", 4) != 0)
+		ft_error(error_file_format);
 	*element = ft_parse_rt(fd);
-	print_element(element);
 }

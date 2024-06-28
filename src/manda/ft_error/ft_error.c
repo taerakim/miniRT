@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 00:16:58 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/23 17:50:10 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/27 22:22:30 by yeondcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	ft_error(t_error_type errcase)
 		perror("error");
 		exit(EXIT_FAILURE);
 	}
+	else if (errcase == error_file_format)
+		ft_putendl_fd("error: invalid file format", 2);
 	else if (errcase == error_argument)
 		ft_putendl_fd("error: need .rt file", 2);
 	else if (errcase == error_mlx_mlx)
