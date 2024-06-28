@@ -34,6 +34,9 @@ char		**rt_split(char *str);
 void		*ft_split_error(char **str, int size);
 
 /* test atod*/
+void		print_element(t_element *elem);
+void		add_light_to_list(t_light **head, t_light *new);
+void		ft_clear_char(char **str);
 int			atod(char *str, double *result);
 void		print_element(t_element *elem);
 int			arg_len(char **vals);

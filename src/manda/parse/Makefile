@@ -9,6 +9,8 @@ NAME := parse.a
 HEAD := parse.h
 SRCS := parse.c \
 		convertor.c \
+		constructor.c \
+		constructor2.c \
 		parse_utils.c \
 		split.c \
 		split_utils.c \
