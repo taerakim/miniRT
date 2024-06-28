@@ -6,7 +6,7 @@
 /*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 11:09:05 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/24 17:08:22 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/27 21:47:24 by yeondcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ double	min(double a, double b)
 		return (a);
 	else if (b > 0)
 		return (b);
-	return (-1);
+	return (0);
 }
 
 t_det	det(double a, double b, double c)
