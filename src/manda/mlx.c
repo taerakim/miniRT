@@ -6,11 +6,10 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 15:18:41 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/24 13:21:41 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:24:32 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
 #include <stdlib.h>
 #include "minirt.h"
 

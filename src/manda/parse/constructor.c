@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   constructor.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 21:56:17 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/28 13:39:25 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:52:23 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "parse.h"
-#include "ft_error.h"
 #include "vector.h"
+#include "ft_error.h"
 
 t_camera	create_camera(char **vals)
 {

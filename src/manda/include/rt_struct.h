@@ -3,22 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   rt_struct.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:07:28 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/28 13:23:15 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:52:27 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_STRUCT_H
 # define RT_STRUCT_H
 
+/* ________________________________ INCLUDE _________________________________ */
 # include <stdbool.h>
 
+/* ________________________________ TYPEDEF _________________________________ */
 typedef struct s_vec	t_vec;
 typedef struct s_vec	t_point;
 typedef struct s_vec	t_color;
 
+/* ________________________________ STRUCTS _________________________________ */
 struct s_vec
 {
 	double	x;

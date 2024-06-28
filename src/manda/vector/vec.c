@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 12:13:54 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/27 22:04:34 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:31:08 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ t_vec	vunit(t_vec vec)
 	const double	length = sqrt(vec.x * vec.x \
 								+ vec.y * vec.y + vec.z * vec.z);
 
+	if (length == 0)
+		ft_error(error_divider_is_zero);
 	vec.x /= length;
 	vec.y /= length;
 	vec.z /= length;

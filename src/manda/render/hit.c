@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   hit.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 15:29:47 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/27 16:14:54 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:34:22 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "rt_struct.h"
-#include "vector.h"
 #include "minirt.h"
+#include "vector.h"
 
 void	_check_front(t_vec ray, t_hit *record)
 {

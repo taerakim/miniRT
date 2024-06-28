@@ -3,23 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   hit_trace.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:47:29 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/27 19:56:26 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:34:17 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "rt_struct.h"
-#include "vector.h"
 #include "minirt.h"
+#include "vector.h"
 
 bool	hit_trace(t_object **head, t_hit *hit, t_light *light)
 {
-	t_hit		record;
-	t_vec		lp;
-	t_vec		ray;
+	t_hit	record;
+	t_vec	lp;
+	t_vec	ray;
 
 	hit->p = vplus(hit->p, vmulti_s(hit->nvec, BIAS));
 	lp = vminus(hit->p, light->point);

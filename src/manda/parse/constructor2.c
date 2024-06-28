@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   constructor2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 21:57:03 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/28 13:41:01 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:52:19 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "parse.h"
-#include "ft_error.h"
 #include "vector.h"
+#include "ft_error.h"
 
 t_ambient	create_ambient(char **vals)
 {

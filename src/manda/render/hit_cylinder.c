@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   hit_cylinder.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 11:02:37 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/27 16:14:49 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:33:52 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "rt_struct.h"
-#include "vector.h"
 #include "minirt.h"
+#include "vector.h"
 
 bool	hit_cylinder(t_point camera, t_object *cylinder, \
 t_vec ray, t_hit *record)

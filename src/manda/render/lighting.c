@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   lighting.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 16:24:13 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/27 15:28:27 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:34:38 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "minirt.h"
 #include "vector.h"
-#include "libft.h"
 
 t_color	ambient(t_element *element, t_color obj_color)
 {
