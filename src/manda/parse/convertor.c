@@ -6,7 +6,7 @@
 /*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:11:09 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/27 22:24:26 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:38:26 by yeondcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_vec	vec(char *vec)
 	char	**val;
 
 	val = ft_split(vec, ',');
-	if (arg_len(val) != 3)
+	if (arg_len(val) != 3 || !validate_nvec(val))
 		ft_error(error_file_format);
 	atod(val[0], &obj.x);
 	atod(val[1], &obj.y);
@@ -51,7 +51,7 @@ t_color	color(char *rgb)
 	char	**color;
 
 	color = ft_split(rgb, ',');
-	if (arg_len(color) != 3)
+	if (arg_len(color) != 3 || !validate_color(color))
 		ft_error(error_file_format);
 	atod(color[0], &obj.x);
 	atod(color[1], &obj.y);

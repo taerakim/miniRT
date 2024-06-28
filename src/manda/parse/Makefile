@@ -14,6 +14,7 @@ SRCS := parse.c \
 		parse_utils.c \
 		split.c \
 		split_utils.c \
+		validate.c \
 
 include $(TOPDIR)/include_make/Variable.mk
 include $(TOPDIR)/include_make/Link.mk

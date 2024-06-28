@@ -6,7 +6,7 @@
 /*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 21:56:17 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/27 21:57:41 by yeondcho         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:39:25 by yeondcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ t_camera	create_camera(char **vals)
 	camera.point = point(vals[0]);
 	camera.nvec = vec(vals[1]);
 	atod(vals[2], &camera.fov);
+	if (0 > camera.fov || 255 < camera.fov)
+		ft_error(error_file_format);
 	return (camera);
 }
 
