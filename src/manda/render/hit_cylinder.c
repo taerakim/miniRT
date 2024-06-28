@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_cylinder.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 11:02:37 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/24 20:03:54 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/27 16:14:49 by yeondcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 #include "vector.h"
 #include "minirt.h"
 
-bool	hit_cylinder(t_camera *camera, t_object *cylinder, t_vec ray, t_hit *record)
+bool	hit_cylinder(t_point camera, t_object *cylinder, \
+t_vec ray, t_hit *record)
 {
 	bool	ret;
 
@@ -29,9 +30,10 @@ bool	hit_cylinder(t_camera *camera, t_object *cylinder, t_vec ray, t_hit *record
 	return (ret);
 }
 
-bool	hit_cylinder_side(t_camera *camera, t_object *cylinder, t_vec ray, t_hit *record)
+bool	hit_cylinder_side(t_point camera, t_object *cylinder, \
+t_vec ray, t_hit *record)
 {
-	const t_vec	ce = vminus(camera->point, vplus(vmulti_s(cylinder->nvec \
+	const t_vec	ce = vminus(camera, vplus(vmulti_s(cylinder->nvec \
 							, -1 * (cylinder->height / 2)), cylinder->point));
 	const t_det	ans = det(pow(vinner(ray, cylinder->nvec), 2) - 1, \
 	vinner(ray, cylinder->nvec) * vinner(ce, cylinder->nvec) - vinner(ce, ray), \
@@ -49,49 +51,56 @@ bool	hit_cylinder_side(t_camera *camera, t_object *cylinder, t_vec ray, t_hit *r
 		return (false);
 	record->t = ans.t;
 	record->tmax = record->t;
-	record->p = vplus(camera->point, vmulti_s(ray, ans.t));
+	record->ishit = true;
+	record->p = vplus(camera, vmulti_s(ray, ans.t));
 	record->nvec = vunit(vminus(cp, vmulti_s(cylinder->nvec \
 											, vinner(cp, cylinder->nvec))));
+	record->object = *cylinder;
 	return (true);
 }
 
-bool	hit_cylinder_top(t_camera *camera, t_object *cylinder, \
+bool	hit_cylinder_top(t_point camera, t_object *cylinder, \
 t_vec ray, t_hit *record)
 {
 	const t_vec		c = vplus(vmulti_s(cylinder->nvec, \
 	-1 * (cylinder->height / 2)), cylinder->point);
-	const t_vec		ec = vminus(c, camera->point);
-	const double	t = vinner(ec, cylinder->nvec) / vinner(ray, cylinder->nvec);
-	const t_vec		cp = vplus(vminus(camera->point, c), vmulti_s(ray, t));
-
-	if (vinner(cp, cp) > pow(cylinder->diameter / 2, 2))
-		return (false);
-	if (t < record->tmin|| record->tmax < t)
-		return (false);
-	record->t = t;
-	record->tmax = t;
-	record->p = vplus(camera->point, vmulti_s(ray, t));
-	record->nvec = cylinder->nvec;
-	_check_front(ray, record);
-	return (true);
-}
-
-bool	hit_cylinder_base(t_camera *camera, t_object *cylinder, \
-t_vec ray, t_hit *record)
-{
-	const t_vec		c = vplus(vmulti_s(cylinder->nvec, 1 * (cylinder->height / 2)), cylinder->point);
-	const t_vec		ec = vminus(c, camera->point);
-	const double	t = vinner(ec, cylinder->nvec) / vinner(ray, cylinder->nvec);
-	const t_vec		cp = vplus(vminus(camera->point, c), vmulti_s(ray, t));
+	const t_vec		ec = vminus(c, camera);
+	const double	t = vinner(ec, cylinder->nvec) \
+	/ vinner(ray, cylinder->nvec);
+	const t_vec		cp = vplus(vminus(camera, c), vmulti_s(ray, t));
 
 	if (vinner(cp, cp) > pow(cylinder->diameter / 2, 2))
 		return (false);
 	if (t < record->tmin || record->tmax < t)
 		return (false);
 	record->t = t;
-	record->tmax = t;
-	record->p = vplus(camera->point, vmulti_s(ray, t));
+	record->tmax = record->t;
+	record->ishit = true;
+	record->p = vplus(camera, vmulti_s(ray, t));
 	record->nvec = cylinder->nvec;
-	_check_front(ray, record);
+	record->object = *cylinder;
+	return (true);
+}
+
+bool	hit_cylinder_base(t_point camera, t_object *cylinder, \
+t_vec ray, t_hit *record)
+{
+	const t_vec		c = vplus(vmulti_s(cylinder->nvec, \
+	1 * (cylinder->height / 2)), cylinder->point);
+	const t_vec		ec = vminus(c, camera);
+	const double	t = vinner(ec, cylinder->nvec) \
+	/ vinner(ray, cylinder->nvec);
+	const t_vec		cp = vplus(vminus(camera, c), vmulti_s(ray, t));
+
+	if (vinner(cp, cp) > pow(cylinder->diameter / 2, 2))
+		return (false);
+	if (t < record->tmin || record->tmax < t)
+		return (false);
+	record->t = t;
+	record->tmax = record->t;
+	record->ishit = true;
+	record->p = vplus(camera, vmulti_s(ray, t));
+	record->nvec = cylinder->nvec;
+	record->object = *cylinder;
 	return (true);
 }
