@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 18:35:21 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/24 20:19:58 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/27 22:08:18 by yeondcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,35 +24,47 @@ unsigned int	rgb_to_hex(t_color color)
 	return ((r << 16) | (g << 8) | b);
 }
 
-t_color	phong_lighting(t_element *element, t_hit *hit, t_color color)
+void	init_record(t_hit *record)
 {
-	const t_vec		light = vunit(vminus(element->light.point, hit->p));
-	const double	kd = fmax(vinner(hit->nvec, light), 0.0) * element->light.ratio;
-	const t_color	diffuse = vmulti_s(vset(255,255,255), kd);
-	//const t_color	diffuse = vmulti_s(element->light.rgb, kd);
-	//light rgb 파싱 필요!
-
-	return (vplus(color, diffuse));
+	record->ishit = false;
+	record->object.rgb = vset(0, 0, 0);
+	record->t = 0;
+	record->nvec = vset(0, 0, 0);
+	record->p = vset(0, 0, 0);
+	record->tmin = 1e-6;
+	record->tmax = RENDER_MAX;
 }
 
-t_color	get_hit_color(t_element *element, t_vec ray, t_hit *record)
+t_color	phong(t_point camera_point, t_hit record, t_light *light, t_color color)
 {
-	t_object	*object;
-	t_color		color;
+	color = cplus(color, \
+	diffuse(&record, light, record.object.rgb));
+	color = cplus(color, \
+	specular(&record, light, record.object.rgb, \
+	vunit(vminus(camera_point, record.p))));
+	return (color);
+}
 
+t_color	get_hit_color(t_element *element, t_vec ray)
+{
+	t_light		*light;
+	t_color		color;
+	t_hit		record;
+
+	light = element->light;
 	ft_memset(&color, 0, sizeof(t_color));
-	record->ishit = false;
-	record->tmin = 0;
-	record->tmax = RENDER_MAX;
-	object = element->objs;
-	while (object)
+	init_record(&record);
+	if (hit_object(element->camera.point, &element->objs, ray, &record))
 	{
-		if (hit_object(&element->camera, object, ray, record) == true)
+		record.object.rgb = cdiv(record.object.rgb, 255);
+		_check_front(ray, &record);
+		color = cplus(color, ambient(element, record.object.rgb));
+		while (light)
 		{
-			record->ishit = true;
-			color = vmulti_s(vplus(object->rgb, element->ambient.rgb), element->ambient.ratio);
+			if (hit_trace(&element->objs, &record, light))
+				color = phong(element->camera.point, record, light, color);
+			light = light->next;
 		}
-		object = object->next;
 	}
 	return (color);
 }
@@ -60,13 +72,10 @@ t_color	get_hit_color(t_element *element, t_vec ray, t_hit *record)
 void	render(t_element *element, t_mlx *env)
 {
 	t_vec	ray;
-	t_hit	record;
 	t_color	color;
 	int		i;
 	int		k;
 
-	record.tmin = 0;
-	record.tmax = RENDER_MAX;
 	k = 0;
 	while (k < WINDOW_H)
 	{
@@ -74,9 +83,7 @@ void	render(t_element *element, t_mlx *env)
 		while (i < WINDOW_W)
 		{
 			ray = get_ray(&element->camera, i, k);
-			color = get_hit_color(element, ray, &record);
-			if (record.ishit == true)
-				color = phong_lighting(element, &record, color);
+			color = cmulti_s(get_hit_color(element, ray), 255);
 			put_pixel(&env->img, i, k, rgb_to_hex(color));
 			i++;
 		}
