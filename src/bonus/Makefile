@@ -5,16 +5,21 @@ ifndef SRCDIR
 	SRCDIR = $(abspath ./)
 endif
 
-NAME := 
-SRCS := .c \
+NAME := miniRT_bonus
+SRCS := main_bonus.c \
+		init_bonus.c \
+		mlx_bonus.c \
 
 # SRCS(in SRCDIR) ------
-DIRS := \
+DIRS := ft_error_bonus \
+		vector_bonus \
+		parse_bonus \
+		render_bonus \
 
 SUBS := $(addsuffix .a,$(DIRS))
 
 # LIBRARYS -------------
-LDLIBS := -l
+LDLIBS := -lft -lmlx -framework OpenGL -framework Appkit
 
 include $(TOPDIR)/include_make/Variable.mk
 include $(TOPDIR)/include_make/Link.mk

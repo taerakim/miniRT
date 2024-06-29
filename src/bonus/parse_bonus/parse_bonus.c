@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   parse_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 22:18:30 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/29 15:03:32 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/29 14:40:28 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "parse.h"
-#include "ft_error.h"
+#include "parse_bonus.h"
+#include "ft_error_bonus.h"
 
 int	ft_getline_count(int fd)
 {
@@ -63,17 +63,23 @@ void	parse_to_obj(t_element *element, char **obj_args, bool *init_flag)
 {
 	if (ft_strncmp(obj_args[0], "A", 2) == 0)
 	{
-		if (init_flag[INIT_AMB] == true)
+		if (init_flag[INIT_AMB] == false)
+		{
+			element->ambient = create_ambient(&obj_args[1]);
+			init_flag[INIT_AMB] = true;
+		}
+		else
 			ft_error(error_file_format);
-		element->ambient = create_ambient(&obj_args[1]);
-		init_flag[INIT_AMB] = true;
 	}
 	else if (ft_strncmp(obj_args[0], "C", 2) == 0)
 	{
-		if (init_flag[INIT_CAM] == true)
+		if (init_flag[INIT_CAM] == false)
+		{
+			element->camera = create_camera(&obj_args[1]);
+			init_flag[INIT_CAM] = true;
+		}
+		else
 			ft_error(error_file_format);
-		element->camera = create_camera(&obj_args[1]);
-		init_flag[INIT_CAM] = true;
 	}
 	else if (ft_strncmp(obj_args[0], "L", 2) == 0)
 		create_light(&element->light, &obj_args[1]);

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   constructor.c                                      :+:      :+:    :+:   */
+/*   constructor_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 21:56:17 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/29 15:07:00 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/29 16:07:52 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
-#include "vector.h"
-#include "ft_error.h"
+#include "parse_bonus.h"
+#include "vector_bonus.h"
+#include "ft_error_bonus.h"
 
 t_camera	create_camera(char **vals)
 {

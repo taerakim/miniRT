@@ -1,39 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calc.c                                             :+:      :+:    :+:   */
+/*   split_utils_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/24 11:09:05 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/28 16:54:58 by taerakim         ###   ########.fr       */
+/*   Created: 2024/06/22 16:14:56 by yeondcho          #+#    #+#             */
+/*   Updated: 2024/06/28 14:57:33 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
-#include "minirt.h"
+#include <stdlib.h>
 
-double	min(double a, double b)
+void	*ft_split_error(char **str, int size)
 {
-	if (a > 0 && b > 0)
-	{
-		if (a > b)
-			return (b);
-		else
-			return (a);
-	}
-	else if (a > 0)
-		return (a);
-	else if (b > 0)
-		return (b);
-	return (-1);
-}
-
-t_det	det(double a, double b, double c)
-{
-	t_det	result;
-
-	result.det = b * b - a * c;
-	result.t = min((-b + sqrt(result.det)) / a, (-b - sqrt(result.det)) / a);
-	return (result);
+	while (size-- > 0)
+		free(str[size]);
+	free(str);
+	return (NULL);
 }
