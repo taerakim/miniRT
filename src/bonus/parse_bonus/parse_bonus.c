@@ -6,7 +6,7 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 22:18:30 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/28 16:54:40 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/29 14:40:28 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,20 +63,20 @@ void	parse_to_obj(t_element *element, char **obj_args, bool *init_flag)
 {
 	if (ft_strncmp(obj_args[0], "A", 2) == 0)
 	{
-		if (init_flag[0] == false)
+		if (init_flag[INIT_AMB] == false)
 		{
 			element->ambient = create_ambient(&obj_args[1]);
-			init_flag[0] = true;
+			init_flag[INIT_AMB] = true;
 		}
 		else
 			ft_error(error_file_format);
 	}
 	else if (ft_strncmp(obj_args[0], "C", 2) == 0)
 	{
-		if (init_flag[1] == false)
+		if (init_flag[INIT_CAM] == false)
 		{
 			element->camera = create_camera(&obj_args[1]);
-			init_flag[1] = true;
+			init_flag[INIT_CAM] = true;
 		}
 		else
 			ft_error(error_file_format);
@@ -111,5 +111,7 @@ t_element	ft_parse_rt(int fd)
 		free(line);
 		line = get_next_line(fd);
 	}
+	if (init_flag[INIT_CAM] == false)
+		ft_error(error_file_format);
 	return (obj);
 }

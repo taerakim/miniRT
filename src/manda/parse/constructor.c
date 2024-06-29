@@ -6,7 +6,7 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 21:56:17 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/28 13:52:23 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/29 15:07:00 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_camera	create_camera(char **vals)
 	t_camera	camera;
 
 	if (arg_len(vals) != 3)
-		ft_error(error_init);
+		ft_error(error_file_format);
 	camera.point = point(vals[0]);
 	camera.nvec = vec(vals[1]);
 	atod(vals[2], &camera.fov);
@@ -33,7 +33,7 @@ t_object	*create_sphere(char **vals)
 	t_object	*obj;
 
 	if (arg_len(vals) != 3)
-		return (NULL);
+		ft_error(error_file_format);
 	obj = ft_malloc(sizeof(t_object));
 	obj->type = type_sphere;
 	obj->point = point(vals[0]);
@@ -48,7 +48,7 @@ t_object	*create_plane(char **vals)
 	t_object	*obj;
 
 	if (arg_len(vals) != 3)
-		return (NULL);
+		ft_error(error_file_format);
 	obj = ft_malloc(sizeof(t_object));
 	obj->type = type_plane;
 	obj->point = point(vals[0]);
@@ -63,7 +63,7 @@ t_object	*create_cylinder(char **vals)
 	t_object	*obj;
 
 	if (arg_len(vals) != 5)
-		return (NULL);
+		ft_error(error_file_format);
 	obj = ft_malloc(sizeof(t_object));
 	obj->type = type_cylinder;
 	obj->point = point(vals[0]);
@@ -80,7 +80,7 @@ t_object	*create_cone(char **vals)
 	t_object	*obj;
 
 	if (arg_len(vals) != 5)
-		return (NULL);
+		ft_error(error_file_format);
 	obj = ft_malloc(sizeof(t_object));
 	obj->type = type_cone;
 	obj->point = point(vals[0]);
