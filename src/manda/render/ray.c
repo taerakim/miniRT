@@ -6,7 +6,7 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 15:31:36 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/28 13:38:40 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/29 16:05:54 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,18 @@ t_vec	get_ray(t_camera *camera, int i, int k)
 	return (ray);
 }
 
+static t_vec	_get_side_vec(t_vec look)
+{
+	t_vec	cross;
+
+	cross = vcross(vset(0, 1, 0), look);
+	if (fabs(cross.x) < EPSILON \
+	&& fabs(cross.y) < EPSILON \
+	&& fabs(cross.z) < EPSILON )
+		return (vcross(vset(0, 0, 1), look));
+	return (cross);
+}
+
 void	set_viewport(t_camera *camera)
 {
 	t_vec	u;
@@ -33,10 +45,7 @@ void	set_viewport(t_camera *camera)
 	double	gy;
 
 	w = camera->nvec;
-	if (vdiff(vset(0, 1, 0), w) == true)
-		u = vcross(vset(0, 0, -1), w);
-	else
-		u = vcross(vset(0, 1, 0), w);
+	u = _get_side_vec(w);
 	v = vcross(u, w);
 	gx = tan(camera->fov / 2 * M_PI / 180) * FOCAL_LENGTH;
 	gy = gx * WINDOW_H / WINDOW_W;
