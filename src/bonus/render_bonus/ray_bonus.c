@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeondcho <yeondcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 15:31:36 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/29 15:07:23 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/07/03 12:19:01 by yeondcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static t_vec	_get_side_vec(t_vec look)
 	cross = vcross(vset(0, 1, 0), look);
 	if (fabs(cross.x) < EPSILON \
 	&& fabs(cross.y) < EPSILON \
-	&& fabs(cross.z) < EPSILON )
+	&& fabs(cross.z) < EPSILON)
 		return (vcross(vset(0, 0, 1), look));
 	return (cross);
 }
