@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.c                                              :+:      :+:    :+:   */
+/*   ray_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 15:31:36 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/29 16:05:54 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/29 15:07:23 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "minirt.h"
-#include "vector.h"
+#include "minirt_bonus.h"
+#include "vector_bonus.h"
 
 t_vec	get_ray(t_camera *camera, int i, int k)
 {

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   render_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 18:35:21 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/28 15:59:54 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/28 15:59:52 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "minirt.h"
-#include "vector.h"
+#include "minirt_bonus.h"
+#include "vector_bonus.h"
 #include "libft.h"
 
 unsigned int	rgb_to_hex(t_color color)

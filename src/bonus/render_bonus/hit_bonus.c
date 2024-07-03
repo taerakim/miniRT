@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hit.c                                              :+:      :+:    :+:   */
+/*   hit_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 15:29:47 by taerakim          #+#    #+#             */
-/*   Updated: 2024/06/28 16:51:04 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/28 16:51:22 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "minirt.h"
-#include "vector.h"
+#include "minirt_bonus.h"
+#include "vector_bonus.h"
 
 void	_check_front(t_vec ray, t_hit *record)
 {

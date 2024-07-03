@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hit_cylinder.c                                     :+:      :+:    :+:   */
+/*   hit_cylinder_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 11:02:37 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/28 16:05:13 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/28 14:59:35 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "minirt.h"
-#include "vector.h"
+#include "minirt_bonus.h"
+#include "vector_bonus.h"
 
 bool	hit_cylinder(t_point camera, t_object *cylinder, \
 t_vec ray, t_hit *record)

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hit_cone.c                                         :+:      :+:    :+:   */
+/*   hit_cone_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 22:25:32 by yeondcho          #+#    #+#             */
-/*   Updated: 2024/06/28 16:52:05 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/06/28 16:52:10 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "minirt.h"
-#include "vector.h"
+#include "minirt_bonus.h"
+#include "vector_bonus.h"
 
 bool
 hit_cone_side(t_point camera, t_object *cone, t_vec ray, t_hit *record);
@@ -44,11 +44,11 @@ t_vec ray, t_hit *record)
 	pow(vinner(ce, cone->nvec), 2) - vinner(ce, ce) * pow(cos(theta), 2));
 	t_vec			cp;
 
-	if (ans.det < 0)
+	if (ans.det < 0 || ans.t < record->tmin || record->tmax < ans.t)
 		return (false);
 	cp = vplus(ce, vmulti_s(ray, ans.t));
 	if (!(EPSILON <= vinner(cone->nvec, cp) \
-	&& vinner(cone->nvec, cp) <= cone->height + EPSILON))
+	&& vinner(cone->nvec, cp) <= cone->height))
 		return (false);
 	record->t = ans.t;
 	record->tmax = record->t;
